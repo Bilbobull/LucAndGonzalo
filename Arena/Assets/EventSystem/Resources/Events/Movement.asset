@@ -143,5 +143,5 @@ MonoBehaviour:
   sendOnActive: 1
   sendOnInactive: 0
   sendOnTriggered: 1
-  sendOnReleased: 0
+  sendOnReleased: 1
   repeatDelay: Infinity

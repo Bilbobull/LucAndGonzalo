@@ -211,13 +211,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 935350901}
-  m_LocalRotation: {x: 0.28763056, y: -0, z: -0, w: 0.95774144}
-  m_LocalPosition: {x: -1.18, y: 6.01, z: -8.58}
+  m_LocalRotation: {x: -0.001912225, y: -0.95772034, z: 0.2876242, w: -0.0063676545}
+  m_LocalPosition: {x: 1.58, y: 6.01, z: 12.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 33.432003, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33.432003, y: -180.762, z: 0}
 --- !u!1 &1456157081
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 1561409095}
   m_Layer: 0
   m_Name: Test Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNum: 1
-  Speed: 3
+  Speed: 5
 --- !u!23 &1561409096
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1844860057}
   m_Layer: 0
   m_Name: Test Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNum: 0
-  Speed: 3
+  Speed: 5
 --- !u!23 &1844860058
 MeshRenderer:
   m_ObjectHideFlags: 0
