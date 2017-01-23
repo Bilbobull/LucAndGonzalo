@@ -18,7 +18,7 @@ public class HealthSystem : MonoBehaviour {
 		
 	}
 
-    void OnCollisionStart(Collision hit)
+    public void OnCollisionEnter(Collision hit)
     {
         if ((this.name == "Enemy" && hit.gameObject.tag == "Player") || (this.tag == "Player" && hit.gameObject.name == "Enemy"))
         {
