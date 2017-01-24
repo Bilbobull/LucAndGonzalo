@@ -11,9 +11,6 @@ public class PlayerController : MonoBehaviour {
 	void Start ()
     {
         InputEvents.Movement.Subscribe(OnMovement, PlayerNum);
-        InputEvents.RangedAttack.Subscribe(OnRangedAttack, PlayerNum);
-        InputEvents.MeleeAttack.Subscribe(OnMeleeAttack, PlayerNum);
-        InputEvents.MovementAbility.Subscribe(OnMovementAbility, PlayerNum);
     }
 
 
@@ -53,21 +50,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnMovementAbility(InputEventInfo info)
-    {
-        switch (info.inputState)
-        {
-            // Increase speed while held
-            case InputState.Triggered:
-                Speed += 5.0f;
-                break;
-
-            // Return speed to normal when released
-            case InputState.Released:
-                Speed -= 5.0f;
-                break;
-        }
-    }
 
     void OnMovement(InputEventInfo info)
     {

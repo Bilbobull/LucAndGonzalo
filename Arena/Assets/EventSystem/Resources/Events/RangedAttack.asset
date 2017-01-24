@@ -31,7 +31,7 @@ MonoBehaviour:
     sendOnChannels: 0100
     expanded: 1
     parentEvent: {fileID: 11400000}
-    keyCode: 113
+    keyCode: 101
     gamePadButton: 0
     gamePadAxis: 0
     mouseDirection: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   threshold: 0.2
   thresholdType: 0
   sendOnActive: 1
-  sendOnInactive: 0
+  sendOnInactive: 1
   sendOnTriggered: 1
   sendOnReleased: 1
   repeatDelay: Infinity

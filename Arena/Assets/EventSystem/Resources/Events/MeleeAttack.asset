@@ -25,14 +25,25 @@ MonoBehaviour:
     gamePadAxis: 0
     mouseDirection: 0
     threshold: 0
+  - name: Method 2
+    controlSet: 0
+    inputType_: 1
+    sendOnChannels: 0100
+    expanded: 1
+    parentEvent: {fileID: 11400000}
+    keyCode: 113
+    gamePadButton: 0
+    gamePadAxis: 0
+    mouseDirection: 0
+    threshold: 0
   singleAxisInputMethods: []
   dualAxisInputMethods: []
   channelCount: 2
   hasNegativeInput: 1
   threshold: 0.2
   thresholdType: 0
-  sendOnActive: 0
-  sendOnInactive: 0
-  sendOnTriggered: 0
-  sendOnReleased: 0
+  sendOnActive: 1
+  sendOnInactive: 1
+  sendOnTriggered: 1
+  sendOnReleased: 1
   repeatDelay: Infinity

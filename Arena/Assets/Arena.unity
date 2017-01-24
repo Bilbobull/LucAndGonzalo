@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -420,6 +420,9 @@ GameObject:
   - component: {fileID: 1844860057}
   - component: {fileID: 1844860062}
   - component: {fileID: 1844860063}
+  - component: {fileID: 1844860064}
+  - component: {fileID: 1844860065}
+  - component: {fileID: 1844860066}
   m_Layer: 0
   m_Name: Test Player 1
   m_TagString: Player
@@ -497,7 +500,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844860056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -0.682, y: 0.79936504, z: 0.427}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -531,6 +534,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   Damage: 1
+--- !u!114 &1844860064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844860056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f9c2d6bdda6454695699accc3cc6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedBoostAmount: 10
+  SpeedBoostTime: 2
+  SpeedBoostRechargeTime: 1
+--- !u!114 &1844860065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844860056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98dbaa4527403bd4cbb9f217c4ec2da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackPrefab: {fileID: 1064304835701772, guid: 248f6d578f5e75d40bc5364ffe0ee85a,
+    type: 2}
+  MeleeRechargeTime: 2
+--- !u!114 &1844860066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844860056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b25d136406b8eb44a7543776a94de2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangedAttackPrefab: {fileID: 1701932285741730, guid: 862c0148605154d4eb4784495bac94ba,
+    type: 2}
+  MinCharge: 0.25
+  RangedAbilityChargeTime: 1
 --- !u!1 &2000383683
 GameObject:
   m_ObjectHideFlags: 0
