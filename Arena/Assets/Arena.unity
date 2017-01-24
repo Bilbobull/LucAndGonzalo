@@ -405,7 +405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  Damage: 1
 --- !u!1 &1844860056
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +529,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  Damage: 1
 --- !u!1 &2000383683
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,9 +543,10 @@ GameObject:
   - component: {fileID: 2000383684}
   - component: {fileID: 2000383690}
   - component: {fileID: 2000383689}
+  - component: {fileID: 2000383691}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -655,4 +654,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 5
+--- !u!114 &2000383691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000383683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0010af67805ee438ae626c75c9e5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagingUnitTag: Player
   Damage: 1
