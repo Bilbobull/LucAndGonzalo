@@ -1,13 +1,13 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour {
     public float speed = 1.0f;
     public string playertag = "Player";
     private GameObject[] players;
     private GameObject ClosestPlayer;
+    private float timer = 0;
+    private int MovementType = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +16,36 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        players = GameObject.FindGameObjectsWithTag(playertag);
-        ClosestPlayer = FindClosestPlayer();
+        if (timer <= 0.0f)
+        {
+            players = GameObject.FindGameObjectsWithTag(playertag);
+            ClosestPlayer = FindClosestPlayer();
+            MovementType = Random.Range(1, 1);
 
-        Vector3 direction = ClosestPlayer.transform.position - this.transform.position;
-        direction.Normalize();
-        this.transform.position += direction * speed;
+            switch (MovementType)
+            {
+                case 1:
+                    timer = Random.Range(1.0f, 3.0f);
+                    break;
 
+
+                default:
+                    break;
+            }
+        }
+
+        switch (MovementType)
+        {
+            case 1:
+                WalkTowardsClosestPlayer();
+                break;
+
+
+            default:
+                break;
+        }
+
+        timer -= Time.deltaTime;
 	}
 
     private GameObject FindClosestPlayer()
@@ -37,4 +60,12 @@ public class EnemyBehavior : MonoBehaviour {
 
         return closest;
     }
+
+    private void WalkTowardsClosestPlayer()
+    {
+        Vector3 direction = ClosestPlayer.transform.position - this.transform.position;
+        direction.Normalize();
+        this.transform.position += direction * speed;
+    }
+
 }

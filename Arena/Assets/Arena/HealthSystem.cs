@@ -5,7 +5,6 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour {
 
     public int MaxHealth = 5;
-    public int Damage = 1;
     private int Health = 0;
 
 	// Use this for initialization
@@ -18,16 +17,11 @@ public class HealthSystem : MonoBehaviour {
 		
 	}
 
-    public void OnCollisionEnter(Collision hit)
+    public void SubstractHealth(int hp)
     {
-        if ((this.name == "Enemy" && hit.gameObject.tag == "Player") || (this.tag == "Player" && hit.gameObject.name == "Enemy"))
-        {
-            Health -= Damage;
-            if (Health <= 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        Health -= hp;
+      //  if (Health <= 0)
+      //      Destroy(this.gameObject);
     }
 
 }
