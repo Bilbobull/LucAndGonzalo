@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class PlayerMeleeAbility : MonoBehaviour
+public class PlayerMeleeAbility : BaseAbility
 {
     [Tooltip("The attack prefab we spawn on attack")]
     public GameObject AttackPrefab;
@@ -17,7 +16,7 @@ public class PlayerMeleeAbility : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        player = GetComponent<PlayerController>();
+        player = GetPlayer();
         InputEvents.MeleeAttack.Subscribe(OnMeleeAbility, player.PlayerNum);
 	}
 	

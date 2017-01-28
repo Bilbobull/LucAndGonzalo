@@ -3,23 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRangedAbility : MonoBehaviour
+public class PlayerRangedAbility : BaseAbility
 {
     public GameObject RangedAttackPrefab;
-
+    public PlayerController player;
     [Range(0,1)]
     public float MinCharge;
     public float RangedAbilityChargeTime;
     private float RangedAbilityMeter;
 
-    PlayerController player;
     bool Charging;
     float SpeedMult = -0.1f;
 
     // Use this for initialization
     void Start ()
     {
-        player = GetComponent<PlayerController>();
+        player = GetPlayer();
         InputEvents.RangedAttack.Subscribe(OnRangedAttack, player.PlayerNum);
     }
 
@@ -80,9 +79,15 @@ public class PlayerRangedAbility : MonoBehaviour
     void DoAttack()
     {
         // Create our attack projectile
-        Debug.Log("Creating Ranged attack!");
+        // Debug.Log("Creating Ranged attack!");
         // Create the attack as a child of the player in local space
         GameObject proj = Instantiate(RangedAttackPrefab, transform.position, transform.rotation);
         proj.SendMessage("ChargeValue", RangedAbilityMeter, SendMessageOptions.DontRequireReceiver);
+    }
+
+    void OnRemoveAbility()
+    {
+        InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
+        InputEvents.RangedAttack.Unsubscribe(OnRangedAttack, player.PlayerNum);
     }
 }

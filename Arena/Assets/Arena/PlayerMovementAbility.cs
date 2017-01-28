@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
-public class PlayerMovementAbility : MonoBehaviour
+public class PlayerMovementAbility : BaseAbility
 {
     [Tooltip("How much our speed increases while we use the boost")]
     public float SpeedBoostAmount;
@@ -21,7 +20,7 @@ public class PlayerMovementAbility : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        player = GetComponent<PlayerController>();
+        player = GetPlayer();
         InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
     }
 
