@@ -62,7 +62,7 @@ public class PlayerRangedAbility : BaseAbility
         // Face movement direction
         Vector3 lookDir = new Vector3(info.dualAxisValue.x, 0, info.dualAxisValue.y);
         // Apply the inverse of the camera rotation and normalize so that it's screen relative
-        lookDir = Camera.main.transform.InverseTransformDirection(lookDir);
+        lookDir = Camera.main.transform.TransformDirection(lookDir);
         // Project onto the world plane (y = 0)
         lookDir.y = 0.0f;
         lookDir.Normalize();
@@ -83,6 +83,7 @@ public class PlayerRangedAbility : BaseAbility
         // Create the attack as a child of the player in local space
         GameObject proj = Instantiate(RangedAttackPrefab, transform.position, transform.rotation);
         proj.SendMessage("ChargeValue", RangedAbilityMeter, SendMessageOptions.DontRequireReceiver);
+        proj.SendMessage("SetAttacker", GetComponentInParent<PlayerController>(), SendMessageOptions.DontRequireReceiver);
     }
 
     void OnRemoveAbility()

@@ -42,8 +42,13 @@ public class PlayerMeleeAbility : BaseAbility
     {
         Debug.Log("Creating Melee attack!");
         // Create the attack as a child of the player in local space
-        Instantiate(AttackPrefab, transform, false);
+        Instantiate(AttackPrefab, transform.parent, false);
         MeleeMeter = 0.0f;
+    }
+
+    private void OnDestroy()
+    {
+        InputEvents.MeleeAttack.Unsubscribe(OnMeleeAbility, player.PlayerNum);
     }
 
 }

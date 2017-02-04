@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4898253510048068}
   - component: {fileID: 114485709179649574}
+  - component: {fileID: 111248835398167828}
   m_Layer: 0
-  m_Name: PlayerMeleeAttack
+  m_Name: LongswordAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 33989849915714830}
   - component: {fileID: 65906001502396632}
   - component: {fileID: 23187674059191854}
+  - component: {fileID: 114334334049411816}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -51,22 +53,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175914508789816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.506, y: 0.007, z: -0.964}
-  m_LocalScale: {x: 0.44994023, y: 0.3003473, z: 1}
+  m_LocalRotation: {x: 0.108171396, y: 0.4701784, z: 0.1963872, w: 0.8536178}
+  m_LocalPosition: {x: -1.16, y: -0.114, z: -0.79}
+  m_LocalScale: {x: 0.3, y: 0.1, z: 2}
   m_Children: []
   m_Father: {fileID: 4898253510048068}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.342001, y: -45.193, z: -5.5920005}
 --- !u!4 &4898253510048068
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064304835701772}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4056575658336698}
   m_Father: {fileID: 0}
@@ -122,6 +124,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &111248835398167828
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064304835701772}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e4a1159d08e1db74faccb49c9251206a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e4a1159d08e1db74faccb49c9251206a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 1
+  m_CullingType: 0
+--- !u!114 &114334334049411816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1175914508789816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408829b1f548ab449971148a2a0eab17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114485709179649574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,4 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd93493dba5ed749838f2af7ad8762e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Remaining: 0.33333334
+  Remaining: 1
