@@ -75,4 +75,11 @@ public class PlayerMovementAbility : BaseAbility
         player.Speed -= SpeedBoostAmount;
         SpeedBoostActive = false;
     }
+
+    private void OnDestroy()
+    {
+        if (SpeedBoostActive)
+            EndMovementAbility();
+        InputEvents.MovementAbility.Unsubscribe(OnMovementAbility, player.PlayerNum);
+    }
 }
