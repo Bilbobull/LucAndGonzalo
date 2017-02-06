@@ -64,7 +64,7 @@ public class PlayerMovementAbility : BaseAbility
     {
         Debug.Log("Activating movement ability");
         Debug.Assert(SpeedBoostActive == false, "Tried to activate speed boost twice!");
-        player.Speed += SpeedBoostAmount;
+        player.Speed *= SpeedBoostAmount;
         SpeedBoostActive = true;
     }
 
@@ -72,7 +72,7 @@ public class PlayerMovementAbility : BaseAbility
     {
         Debug.Log("Deactivating movement ability");
         Debug.Assert(SpeedBoostActive == true, "Tried to use deactivate boost twice!");
-        player.Speed -= SpeedBoostAmount;
+        player.Speed /= SpeedBoostAmount;
         SpeedBoostActive = false;
     }
 

@@ -286,6 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  SpeedBoostAmount: 10
+  SpeedBoostAmount: 2
   SpeedBoostTime: 2
   SpeedBoostRechargeTime: 1

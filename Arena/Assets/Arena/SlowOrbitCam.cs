@@ -45,8 +45,7 @@ public class SlowOrbitCam : MonoBehaviour
         targetOffset = Anchor.position + offset;
     }
 
-	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         // Update our rotation
         transform.LookAt(Anchor, Vector3.up);
