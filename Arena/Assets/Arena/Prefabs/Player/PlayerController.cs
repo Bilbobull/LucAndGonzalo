@@ -80,4 +80,11 @@ public class PlayerController : MonoBehaviour {
         // Apply to position
         transform.position += movementVector * Speed * Time.deltaTime;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, transform.forward);
+    }
+
+
 }

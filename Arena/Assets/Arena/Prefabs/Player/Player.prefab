@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  AttackPrefab: {fileID: 1064304835701772, guid: 248f6d578f5e75d40bc5364ffe0ee85a,
+  AttackPrefab: {fileID: 1127345576411812, guid: 701c924f9da43a24380263d4fd2a3a4d,
     type: 2}
   MeleeRechargeTime: 2
 --- !u!114 &114583901535174994
