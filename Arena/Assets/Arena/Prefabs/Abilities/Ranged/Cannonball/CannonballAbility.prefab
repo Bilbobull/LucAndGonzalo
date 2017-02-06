@@ -55,5 +55,5 @@ MonoBehaviour:
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 692597b08015b6e458843db77fba502f,
     type: 2}
   player: {fileID: 0}
-  MinCharge: 0.97
-  RangedAbilityChargeTime: 3
+  MinCharge: 0.5
+  RangedAbilityChargeTime: 5
