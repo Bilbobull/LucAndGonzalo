@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ammount: 0
   MinCharge: 1
   RechargeRate: -Infinity
   ChargeRate: 0.33333334
-  Ammount: 0
+  ui: {fileID: 1411983445328284, guid: 063d68626c7c95841a3b1c82f4c7bfd3, type: 2}

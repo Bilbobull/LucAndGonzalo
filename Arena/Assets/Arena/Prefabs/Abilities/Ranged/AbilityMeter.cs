@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AbilityMeter : MonoBehaviour
 {
+    // How much of our ability we actually have
+    [Range(0, 1)]
+    public float Ammount;
+
     [Tooltip("The minimum ammount we have to charge for a successfull attack")]
     [Range(0, 1)]
     public float MinCharge;
@@ -14,9 +18,8 @@ public class AbilityMeter : MonoBehaviour
     [Tooltip("How much the meter charges when activated")]
     public float ChargeRate;
 
-    // How much of our ability we actually have
-    [Range(0, 1)]
-    public float Ammount;
+    [Tooltip("UI Element Prefab")]
+    public GameObject ui;
 
     // Are we charging right now?
     public bool IsCharging
@@ -41,6 +44,8 @@ public class AbilityMeter : MonoBehaviour
     private void Awake()
     {
         IsCharging = false;
+        ui = Instantiate(ui);
+        ui.GetComponent<AbilityMeterUI>().meter = this;
     }
 
     public void StartCharging()
@@ -73,10 +78,8 @@ public class AbilityMeter : MonoBehaviour
             return Ammount;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDestroy()
     {
-        Gizmos.DrawSphere(transform.position, 5.0f * Ammount);
+        Destroy(ui);
     }
-
-
 }

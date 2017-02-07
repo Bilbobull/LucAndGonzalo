@@ -9,30 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1979877460005472}
+  m_RootGameObject: {fileID: 1539744542554536}
   m_IsPrefabParent: 1
---- !u!1 &1979877460005472
+--- !u!1 &1539744542554536
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4109024465321092}
-  - component: {fileID: 114119544999745072}
+  - component: {fileID: 4949444806125546}
+  - component: {fileID: 114055541869390676}
+  - component: {fileID: 114786772258083430}
   m_Layer: 0
-  m_Name: Bow Ranged Ability
+  m_Name: Bow Ranged Ability 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4109024465321092
+--- !u!4 &4949444806125546
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1979877460005472}
+  m_GameObject: {fileID: 1539744542554536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114119544999745072
+--- !u!114 &114055541869390676
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1979877460005472}
+  m_GameObject: {fileID: 1539744542554536}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b25d136406b8eb44a7543776a94de2f, type: 3}
@@ -55,5 +56,19 @@ MonoBehaviour:
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 862c0148605154d4eb4784495bac94ba,
     type: 2}
   player: {fileID: 0}
-  MinCharge: 0.25
-  RangedAbilityChargeTime: 1
+--- !u!114 &114786772258083430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539744542554536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ammount: 0
+  MinCharge: 0.5
+  RechargeRate: -Infinity
+  ChargeRate: 1
+  ui: {fileID: 1411983445328284, guid: 063d68626c7c95841a3b1c82f4c7bfd3, type: 2}
