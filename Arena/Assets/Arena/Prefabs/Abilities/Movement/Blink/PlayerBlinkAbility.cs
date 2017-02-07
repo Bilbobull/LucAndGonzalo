@@ -6,17 +6,15 @@ public class PlayerBlinkAbility : BaseAbility
 {
     [Tooltip("How far we blink")]
     public float BlinkDistance;
-    [Tooltip("How long until we can use the blink")]
-    public float SpeedBoostRechargeTime;
-    // What percent of our speed boost is avaliable
-    private float SpeedBoostMeter = 1.0f;
 
     PlayerController player;
+    AbilityMeter meter;
 
 	// Use this for initialization
 	void Start ()
     {
         player = GetPlayer();
+        meter = GetComponent<AbilityMeter>();
         InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
     }
 
@@ -26,26 +24,17 @@ public class PlayerBlinkAbility : BaseAbility
         {
             // TRIGGER
             case InputState.Triggered:
-                if (SpeedBoostMeter >= 1.0f)
+                if (meter.IsFull)
                     StartMovementAbility();
                 break;
         }
 
     }
 
-    void Update()
-    {
-        if(SpeedBoostMeter < 1.0f)
-        {
-            // Replenish our meter
-            SpeedBoostMeter += (Time.deltaTime / SpeedBoostRechargeTime);
-        }
-    }
-
     void StartMovementAbility()
     {
         player.transform.position += player.transform.forward * BlinkDistance;
-        SpeedBoostMeter = 0.0f;
+        meter.Ammount = 0.0f;
     }
 
     private void OnDestroy()

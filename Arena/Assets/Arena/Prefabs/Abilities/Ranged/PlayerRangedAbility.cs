@@ -3,34 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AbilityMeter))]
 public class PlayerRangedAbility : BaseAbility
 {
     public GameObject RangedAttackPrefab;
     public PlayerController player;
-    [Range(0,1)]
-    public float MinCharge;
-    public float RangedAbilityChargeTime;
-    private float RangedAbilityMeter;
+    private AbilityMeter meter;
 
-    bool Charging;
     float SpeedMult = -0.1f;
 
     // Use this for initialization
     void Start ()
     {
         player = GetPlayer();
+        meter = GetComponent<AbilityMeter>();
         InputEvents.RangedAttack.Subscribe(OnRangedAttack, player.PlayerNum);
     }
-
-    // Update is called once per frame
-    void Update ()
-    {
-		if(Charging)
-        {
-            RangedAbilityMeter += Time.deltaTime / RangedAbilityChargeTime;
-            RangedAbilityMeter = Mathf.Clamp01(RangedAbilityMeter);
-        }
-	}
 
     void OnRangedAttack(InputEventInfo info)
     {
@@ -42,19 +30,17 @@ public class PlayerRangedAbility : BaseAbility
 
             case InputState.Released:
                 EndCharging();
-                if (RangedAbilityMeter > MinCharge)
-                    DoAttack();
                 break;
         }
     }
 
     void StartCharging()
     {
-        // Turn off movement here
+        // Turn off regular movement here
         InputEvents.Movement.Subscribe(OnChargeMovement, player.PlayerNum);
-        Charging = true;
-        RangedAbilityMeter = 0.0f;
+        // Apply our speed reduction
         player.Speed *= SpeedMult;
+        meter.StartCharging();
     }
 
     void OnChargeMovement(InputEventInfo info)
@@ -72,17 +58,19 @@ public class PlayerRangedAbility : BaseAbility
     void EndCharging()
     {
         InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
-        Charging = false;
         player.Speed /= SpeedMult;
+        float charge = meter.EndCharging();
+        if (charge > 0.0f)
+            DoAttack(charge);
     }
 
-    void DoAttack()
+    void DoAttack(float charge)
     {
         // Create our attack projectile
         // Debug.Log("Creating Ranged attack!");
         // Create the attack as a child of the player in local space
         GameObject proj = Instantiate(RangedAttackPrefab, transform.position, transform.rotation);
-        proj.SendMessage("ChargeValue", RangedAbilityMeter, SendMessageOptions.DontRequireReceiver);
+        proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
         proj.SendMessage("SetAttacker", GetComponentInParent<PlayerController>(), SendMessageOptions.DontRequireReceiver);
     }
 

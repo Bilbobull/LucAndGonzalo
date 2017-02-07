@@ -2,24 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AbilityMeter))]
 public class PlayerMovementAbility : BaseAbility
 {
     [Tooltip("How much our speed increases while we use the boost")]
     public float SpeedBoostAmount;
-    [Tooltip("The maximum time we can use the speed boost")]
-    public float SpeedBoostTime;
-    [Tooltip("How long until we can use the speed boost after a full depletion")]
-    public float SpeedBoostRechargeTime;
-    // What percent of our speed boost is avaliable
-    private float SpeedBoostMeter = 1.0f;
-    // Whether our speedboost is active
-    private bool SpeedBoostActive = false;
 
     PlayerController player;
+    AbilityMeter meter;
 
 	// Use this for initialization
 	void Start ()
     {
+        meter = GetComponent<AbilityMeter>();
         player = GetPlayer();
         InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
     }
@@ -30,14 +25,14 @@ public class PlayerMovementAbility : BaseAbility
         {
             // TRIGGER
             case InputState.Triggered:
-                if (SpeedBoostActive == false && SpeedBoostMeter >= 1.0f)
+                if (!meter.IsCharging && meter.IsFull)
                     StartMovementAbility();
                     break;
 
             // RELEASE
             case InputState.Released:
                 // Turn off the speed boost if it's active
-                if(SpeedBoostActive == true)
+                if(meter.IsCharging)
                     EndMovementAbility();
                 break;
         }
@@ -45,40 +40,28 @@ public class PlayerMovementAbility : BaseAbility
 
     void Update()
     {
-        if(SpeedBoostActive)
+        // Turn off the boost if we've used it all up
+        if (meter.IsCharging && meter.IsEmpty)
         {
-            // Deplete our meter
-            SpeedBoostMeter -= (Time.deltaTime / SpeedBoostTime);
-            // Turn off the boost if we've used it all up
-            if (SpeedBoostMeter <= 0.0f)
-                EndMovementAbility();
-        }
-        else if(SpeedBoostMeter < 1.0f)
-        {
-            // Replenish our meter
-            SpeedBoostMeter += (Time.deltaTime / SpeedBoostRechargeTime);
+            EndMovementAbility();
         }
     }
 
     void StartMovementAbility()
     {
-        Debug.Log("Activating movement ability");
-        Debug.Assert(SpeedBoostActive == false, "Tried to activate speed boost twice!");
+        meter.StartCharging();
         player.Speed *= SpeedBoostAmount;
-        SpeedBoostActive = true;
     }
 
     void EndMovementAbility()
     {
-        Debug.Log("Deactivating movement ability");
-        Debug.Assert(SpeedBoostActive == true, "Tried to use deactivate boost twice!");
+        meter.EndCharging();
         player.Speed /= SpeedBoostAmount;
-        SpeedBoostActive = false;
     }
 
     private void OnDestroy()
-    {
-        if (SpeedBoostActive)
+    { 
+        if (meter.IsCharging)
             EndMovementAbility();
         InputEvents.MovementAbility.Unsubscribe(OnMovementAbility, player.PlayerNum);
     }

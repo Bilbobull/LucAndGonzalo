@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4782615879728118}
   - component: {fileID: 114851081187916490}
+  - component: {fileID: 114911855064852794}
   m_Layer: 0
   m_Name: CannonballAbility
   m_TagString: Untagged
@@ -55,5 +56,18 @@ MonoBehaviour:
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 692597b08015b6e458843db77fba502f,
     type: 2}
   player: {fileID: 0}
-  MinCharge: 0.5
-  RangedAbilityChargeTime: 5
+--- !u!114 &114911855064852794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511223503305300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinCharge: 1
+  RechargeRate: -Infinity
+  ChargeRate: 0.33333334
+  Ammount: 0
