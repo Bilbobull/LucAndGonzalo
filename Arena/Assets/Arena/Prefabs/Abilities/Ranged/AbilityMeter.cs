@@ -44,8 +44,11 @@ public class AbilityMeter : MonoBehaviour
     private void Awake()
     {
         IsCharging = false;
-        ui = Instantiate(ui);
-        ui.GetComponent<AbilityMeterUI>().meter = this;
+        if(ui)
+        {
+            ui = Instantiate(ui);
+            ui.GetComponent<AbilityMeterUI>().meter = this;
+        }
     }
 
     public void StartCharging()

@@ -13,7 +13,7 @@ public class EnemyAttackManager : MonoBehaviour
         GameObject target = GetComponent<EnemyBehavior>().ClosestPlayer;
 
         // HACK
-        if (GetComponent<EnemyBehavior>().movement != EnemyBehavior.MovementType.WalkTowardsPlayer) return;
+        // if (GetComponent<EnemyBehavior>().movement != EnemyBehavior.MovementType.WalkTowardsPlayer) return;
 
         if (!target) return;
 

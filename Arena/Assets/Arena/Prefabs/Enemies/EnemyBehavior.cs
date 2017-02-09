@@ -19,7 +19,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public GameObject ClosestPlayer;
     private float timer = 0;
-    private Vector3 Direction;
+    private Vector3 MoveDirection;
+    private Vector3 LookDirection;
     private float PassedTime = 0;
      
     private void ChangeState()
@@ -67,11 +68,11 @@ public class EnemyBehavior : MonoBehaviour
             default:
                 break;
         }
-        Direction.Normalize();
-        Quaternion target = Quaternion.LookRotation(Direction, Vector3.up);
+        MoveDirection.Normalize();
+        Quaternion target = Quaternion.LookRotation(LookDirection, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
 
-        transform.position += Direction * speed * Time.deltaTime;
+        transform.position += MoveDirection * speed * Time.deltaTime;
     }
 
     private GameObject FindClosestPlayer()
@@ -94,28 +95,31 @@ public class EnemyBehavior : MonoBehaviour
 
     private void WalkTowardsClosestPlayer()
     {
-        Direction = ClosestPlayer.transform.position - transform.position;
+        MoveDirection = ClosestPlayer.transform.position - transform.position;
+        LookDirection = MoveDirection;
     }
 
     private void WalkAwayFromClosestPlayer()
     {
-        Direction = -(ClosestPlayer.transform.position - transform.position);
+        MoveDirection = -(ClosestPlayer.transform.position - transform.position);
+        LookDirection = -MoveDirection;
     }
 
     private void Wander()
     {
-        Direction = new Vector3(Random.value, 0, Random.value);
+        MoveDirection = new Vector3(Random.value, 0, Random.value);
+        LookDirection = MoveDirection;
     }
 
     private void ZigZag()
     {
         PassedTime += Time.deltaTime;   
 
-        Direction = ClosestPlayer.transform.position - this.transform.position;
+        MoveDirection = ClosestPlayer.transform.position - this.transform.position;
 
-        Vector3 RightVec = new Vector3(-Direction.z, 0, Direction.x) * (zigzagradius* Mathf.Cos(PassedTime));
+        Vector3 RightVec = new Vector3(-MoveDirection.z, 0, MoveDirection.x) * (zigzagradius* Mathf.Cos(PassedTime));
 
-        Direction += RightVec;
+        MoveDirection += RightVec;
     }
 
 }

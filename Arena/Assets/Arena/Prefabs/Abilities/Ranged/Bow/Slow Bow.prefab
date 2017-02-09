@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114055541869390676}
   - component: {fileID: 114786772258083430}
   m_Layer: 0
-  m_Name: Bow Ranged Ability 1
+  m_Name: Slow Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ammount: 0
-  MinCharge: 0.5
-  RechargeRate: -Infinity
+  MinCharge: 0.75
+  RechargeRate: -1
   ChargeRate: 1
-  ui: {fileID: 1411983445328284, guid: 063d68626c7c95841a3b1c82f4c7bfd3, type: 2}
+  ui: {fileID: 0}

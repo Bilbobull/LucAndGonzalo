@@ -17,7 +17,8 @@ public class PlayerRangedAbility : BaseAbility
     {
         player = GetPlayer();
         meter = GetComponent<AbilityMeter>();
-        InputEvents.RangedAttack.Subscribe(OnRangedAttack, player.PlayerNum);
+        if(player)
+            InputEvents.RangedAttack.Subscribe(OnRangedAttack, player.PlayerNum);
     }
 
     void OnRangedAttack(InputEventInfo info)
@@ -29,7 +30,7 @@ public class PlayerRangedAbility : BaseAbility
                 break;
 
             case InputState.Released:
-                EndCharging();
+                EndCharging(null);
                 break;
         }
     }
@@ -37,9 +38,12 @@ public class PlayerRangedAbility : BaseAbility
     void StartCharging()
     {
         // Turn off regular movement here
-        InputEvents.Movement.Subscribe(OnChargeMovement, player.PlayerNum);
-        // Apply our speed reduction
-        player.Speed *= SpeedMult;
+        if (player)
+        {
+            InputEvents.Movement.Subscribe(OnChargeMovement, player.PlayerNum);
+            // Apply our speed reduction
+            player.Speed *= SpeedMult;
+        }
         meter.StartCharging();
     }
 
@@ -55,28 +59,59 @@ public class PlayerRangedAbility : BaseAbility
         transform.LookAt(transform.position + lookDir, Vector3.up);
     }
 
-    void EndCharging()
+    void EndCharging(GameObject target)
     {
-        InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
-        player.Speed /= SpeedMult;
+        if(player)
+        {
+            InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
+            player.Speed /= SpeedMult;
+        }
         float charge = meter.EndCharging();
         if (charge > 0.0f)
-            DoAttack(charge);
+            DoAttack(charge, target);
     }
 
-    void DoAttack(float charge)
+    void DoAttack(float charge, GameObject target)
     {
         // Create our attack projectile
-        // Debug.Log("Creating Ranged attack!");
-        // Create the attack as a child of the player in local space
         GameObject proj = Instantiate(RangedAttackPrefab, transform.position, transform.rotation);
-        proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
-        proj.SendMessage("SetAttacker", GetComponentInParent<PlayerController>(), SendMessageOptions.DontRequireReceiver);
+
+        // Create the attack as a child of the player in local space
+        if (player)
+        {
+            proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
+            proj.SendMessage("SetAttacker", GetComponentInParent<PlayerController>());
+        }
+        else if (target)
+        {
+            proj.GetComponentInChildren<DamageOnCollision>().DamagingUnitTag = target.tag;
+        }
     }
 
     void OnRemoveAbility()
     {
-        InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
-        InputEvents.RangedAttack.Unsubscribe(OnRangedAttack, player.PlayerNum);
+        if(player)
+        {
+            InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
+            InputEvents.RangedAttack.Unsubscribe(OnRangedAttack, player.PlayerNum);
+        }
+    }
+
+    public override bool ShouldUseAbility(GameObject currentTarget)
+    {
+        if (!meter.IsEmpty || meter.IsCharging) return false;
+        return base.ShouldUseAbility(currentTarget);
+    }
+
+    public override IEnumerator AIAttackRoutine(GameObject target)
+    {
+        StartCharging();
+        float chargeAmount = UnityEngine.Random.Range(meter.MinCharge, 1.0f);
+        yield return new WaitUntil(() => {
+            return (meter.Ammount >= chargeAmount) ||
+                (target == null);
+        });
+        EndCharging(target);
+        yield break;
     }
 }
