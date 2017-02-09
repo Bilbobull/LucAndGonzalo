@@ -13,6 +13,7 @@ public class BaseAbility : MonoBehaviour
 
     public AbilityType type;
 
+    public string abilityName;
     protected PlayerController GetPlayer()
     {
         return GetComponentInParent<PlayerController>() as PlayerController;

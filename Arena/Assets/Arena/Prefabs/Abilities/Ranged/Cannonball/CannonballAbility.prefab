@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  abilityName: Cannonball
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 692597b08015b6e458843db77fba502f,
     type: 2}
   player: {fileID: 0}

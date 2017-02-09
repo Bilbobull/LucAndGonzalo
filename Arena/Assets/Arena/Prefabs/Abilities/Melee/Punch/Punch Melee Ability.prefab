@@ -69,5 +69,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  abilityName: Punch
   AttackPrefab: {fileID: 1127345576411812, guid: 701c924f9da43a24380263d4fd2a3a4d,
     type: 2}

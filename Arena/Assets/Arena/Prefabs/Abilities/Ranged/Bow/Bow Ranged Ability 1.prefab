@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  abilityName: Spear
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 862c0148605154d4eb4784495bac94ba,
     type: 2}
   player: {fileID: 0}

@@ -69,4 +69,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  abilityName: Dash
   SpeedBoostAmount: 2
