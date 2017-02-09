@@ -16,7 +16,8 @@ public class PlayerMovementAbility : BaseAbility
     {
         meter = GetComponent<AbilityMeter>();
         player = GetPlayer();
-        InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
+        if(player)
+            InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
     }
 
     void OnMovementAbility(InputEventInfo info)
@@ -50,19 +51,57 @@ public class PlayerMovementAbility : BaseAbility
     void StartMovementAbility()
     {
         meter.StartCharging();
-        player.Speed *= SpeedBoostAmount;
+        if(player)
+        {
+            player.Speed *= SpeedBoostAmount;
+        }
+        else
+        {
+            GetComponentInParent<EnemyBehavior>().speed *= SpeedBoostAmount;
+        }
     }
 
     void EndMovementAbility()
     {
         meter.EndCharging();
-        player.Speed /= SpeedBoostAmount;
+        if (player)
+        {
+            player.Speed /= SpeedBoostAmount;
+        }
+        else
+        {
+            EnemyBehavior enemy = GetComponentInParent<EnemyBehavior>();
+            if(enemy)
+                enemy.speed /= SpeedBoostAmount;
+        }
+
+    }
+
+    // AI Ability check hook
+    public override bool ShouldUseAbility(GameObject currentTarget)
+    {
+        if (meter.IsCharging || !meter.IsFull)
+            return false;
+        return base.ShouldUseAbility(currentTarget);
+    }
+
+    // AI Attack routine
+    public override IEnumerator AIAttackRoutine(GameObject target)
+    {
+        // Start running 
+        StartMovementAbility();
+        // Wait until we're out of charge or our player dies
+        yield return new WaitUntil(() => (meter.IsCharging && meter.IsEmpty));
+        // Stop running
+        EndMovementAbility();
+        yield break;
     }
 
     private void OnDestroy()
     { 
         if (meter.IsCharging)
             EndMovementAbility();
-        InputEvents.MovementAbility.Unsubscribe(OnMovementAbility, player.PlayerNum);
+        if(player)
+            InputEvents.MovementAbility.Unsubscribe(OnMovementAbility, player.PlayerNum);
     }
 }

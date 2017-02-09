@@ -76,10 +76,13 @@ public class PlayerController : MonoBehaviour {
         movementVector.y = 0.0f;
         movementVector.Normalize();
         // Rotate towards our movement direction
-        Quaternion target = Quaternion.LookRotation(movementVector, Vector3.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
-        // Apply to position
-        transform.position += movementVector * Speed * Time.deltaTime;
+        if(movementVector.sqrMagnitude > 0.01)
+        {
+            Quaternion target = Quaternion.LookRotation(movementVector, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
+            // Apply to position
+            transform.position += movementVector * Speed * Time.deltaTime;
+        }
     }
 
     private void OnDrawGizmos()

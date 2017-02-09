@@ -70,4 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   abilityName: Dash
+  ai:
+    minAttackRadius: 0
+    maxAttackRadius: 10
   SpeedBoostAmount: 2
