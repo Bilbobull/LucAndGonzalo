@@ -85,10 +85,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(transform.position, transform.forward);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawRay(transform.position, transform.forward);
+    //}
 
 
 }

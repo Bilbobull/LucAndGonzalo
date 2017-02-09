@@ -73,6 +73,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ammount: 0
   MinCharge: 0.75
-  RechargeRate: -1
+  RechargeRate: -0.33
   ChargeRate: 1
   ui: {fileID: 0}

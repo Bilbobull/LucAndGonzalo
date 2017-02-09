@@ -120,6 +120,7 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 RightVec = new Vector3(-MoveDirection.z, 0, MoveDirection.x) * (zigzagradius* Mathf.Cos(PassedTime));
 
         MoveDirection += RightVec;
+        LookDirection = MoveDirection;
     }
 
 }
