@@ -10,7 +10,7 @@ public class PlayerRangedAbility : BaseAbility
     public PlayerController player;
     private AbilityMeter meter;
 
-    float SpeedMult = -0.1f;
+    float SpeedMult = 0.1f;
 
     // Use this for initialization
     void Start ()

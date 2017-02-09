@@ -161,4 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd93493dba5ed749838f2af7ad8762e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Remaining: 1
+  Remaining: 0.5

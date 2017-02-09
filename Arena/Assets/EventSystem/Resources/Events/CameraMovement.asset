@@ -16,10 +16,50 @@ MonoBehaviour:
   binaryInputMethods: []
   singleAxisInputMethods: []
   dualAxisInputMethods:
-  - name: Method 1
+  - name: Method 2
+    controlSet: 0
+    inputType_: 5
+    sendOnChannels: 0101
+    expanded: 1
+    parentEvent: {fileID: 11400000}
+    horizontal:
+      name: 
+      controlSet: 0
+      inputType_: 5
+      sendOnChannels: 01
+      expanded: 1
+      parentEvent: {fileID: 11400000}
+      positiveKeyCode: 0
+      negativeKeyCode: 0
+      positiveGamePadButton: 0
+      negativeGamePadButton: 0
+      positiveGamePadAxis: 10
+      negativeGamePadAxis: 9
+      positiveMouseDirection: 0
+      negativeMouseDirection: 0
+      currentValue: 0
+      delay: 0
+    vertical:
+      name: 
+      controlSet: 0
+      inputType_: 5
+      sendOnChannels: 01
+      expanded: 1
+      parentEvent: {fileID: 11400000}
+      positiveKeyCode: 0
+      negativeKeyCode: 0
+      positiveGamePadButton: 0
+      negativeGamePadButton: 0
+      positiveGamePadAxis: 7
+      negativeGamePadAxis: 8
+      positiveMouseDirection: 0
+      negativeMouseDirection: 0
+      currentValue: 0
+      delay: 0
+  - name: Method 2
     controlSet: 0
     inputType_: 1
-    sendOnChannels: 
+    sendOnChannels: 0101
     expanded: 1
     parentEvent: {fileID: 11400000}
     horizontal:
@@ -56,12 +96,12 @@ MonoBehaviour:
       negativeMouseDirection: 0
       currentValue: 0
       delay: 0
-  channelCount: 0
+  channelCount: 2
   hasNegativeInput: 1
   threshold: 0.2
   thresholdType: 0
   sendOnActive: 1
   sendOnInactive: 0
-  sendOnTriggered: 0
+  sendOnTriggered: 1
   sendOnReleased: 0
   repeatDelay: Infinity

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4558097907185408}
   - component: {fileID: 114549948776034454}
+  - component: {fileID: 114383949973717150}
   m_Layer: 0
   m_Name: Punch Melee Ability
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114383949973717150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353028987793130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ammount: 1
+  MinCharge: 0
+  RechargeRate: 2
+  ChargeRate: 0
+  ui: {fileID: 1411983445328284, guid: e07c1961d4385ae4ba4a6afb1bbd7145, type: 2}
 --- !u!114 &114549948776034454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,4 +71,3 @@ MonoBehaviour:
   type: 1
   AttackPrefab: {fileID: 1127345576411812, guid: 701c924f9da43a24380263d4fd2a3a4d,
     type: 2}
-  MeleeRechargeTime: 2

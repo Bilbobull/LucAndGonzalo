@@ -1,5 +1,69 @@
 namespace Events
 {
+    public static class GameLose
+    {
+        public delegate void SubscripionDelegate();
+        private static SubscripionDelegate subscriptions = delegate{ };
+
+        /// <summary>
+        /// Subscribes to this event so that when the event is sent the supplied function is called.
+        /// Requires a function which takes no parameters.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Subscribe(SubscripionDelegate _eventFunction)
+        {
+            subscriptions += _eventFunction;
+        }
+        /// <summary>
+        /// Unsubscribes from this event so that when the event is sent the supplied function is no longer called.
+        /// Requires a function which takes no parameters.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Unsubscribe(SubscripionDelegate _eventFunction)
+        {
+            subscriptions -= _eventFunction;
+        }
+        /// <summary>
+        /// Sends the event, calling all functions which are subscribe to this event.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Send()
+        {
+            subscriptions.Invoke();
+        }
+    }
+    public static class GameWin
+    {
+        public delegate void SubscripionDelegate();
+        private static SubscripionDelegate subscriptions = delegate{ };
+
+        /// <summary>
+        /// Subscribes to this event so that when the event is sent the supplied function is called.
+        /// Requires a function which takes no parameters.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Subscribe(SubscripionDelegate _eventFunction)
+        {
+            subscriptions += _eventFunction;
+        }
+        /// <summary>
+        /// Unsubscribes from this event so that when the event is sent the supplied function is no longer called.
+        /// Requires a function which takes no parameters.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Unsubscribe(SubscripionDelegate _eventFunction)
+        {
+            subscriptions -= _eventFunction;
+        }
+        /// <summary>
+        /// Sends the event, calling all functions which are subscribe to this event.
+        /// </summary>
+        /// <param name="_eventFunction"></param>
+        public static void Send()
+        {
+            subscriptions.Invoke();
+        }
+    }
 }
 namespace InputEvents
 {
@@ -21,7 +85,7 @@ namespace InputEvents
     public class CameraMovement : SubscriptionData
     {
         public delegate void SubscripionDelegate(InputEventInfo _inputEventInfo);
-        private static SubscripionDelegate[] channelSubscriptions = new SubscripionDelegate[] {  }; //for channel-specific Subscriptions
+        private static SubscripionDelegate[] channelSubscriptions = new SubscripionDelegate[] {  delegate { }, delegate { } }; //for channel-specific Subscriptions
         private static SubscripionDelegate subscriptions = delegate { }; //for all other subscriptions (that don't care about channel)
         private static int channelCount { get { return channelSubscriptions.Length; } }
 

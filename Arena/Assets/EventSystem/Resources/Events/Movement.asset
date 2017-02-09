@@ -33,8 +33,8 @@ MonoBehaviour:
       negativeKeyCode: 0
       positiveGamePadButton: 0
       negativeGamePadButton: 0
-      positiveGamePadAxis: 0
-      negativeGamePadAxis: 0
+      positiveGamePadAxis: 6
+      negativeGamePadAxis: 5
       positiveMouseDirection: 0
       negativeMouseDirection: 0
       currentValue: 0
@@ -50,8 +50,8 @@ MonoBehaviour:
       negativeKeyCode: 0
       positiveGamePadButton: 0
       negativeGamePadButton: 0
-      positiveGamePadAxis: 0
-      negativeGamePadAxis: 0
+      positiveGamePadAxis: 3
+      negativeGamePadAxis: 4
       positiveMouseDirection: 0
       negativeMouseDirection: 0
       currentValue: 0

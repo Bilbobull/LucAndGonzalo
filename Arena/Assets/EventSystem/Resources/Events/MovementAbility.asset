@@ -36,6 +36,17 @@ MonoBehaviour:
     gamePadAxis: 0
     mouseDirection: 0
     threshold: 0
+  - name: Method 3
+    controlSet: 0
+    inputType_: 1
+    sendOnChannels: 0001
+    expanded: 1
+    parentEvent: {fileID: 11400000}
+    keyCode: 305
+    gamePadButton: 0
+    gamePadAxis: 0
+    mouseDirection: 0
+    threshold: 0
   singleAxisInputMethods: []
   dualAxisInputMethods: []
   channelCount: 2
