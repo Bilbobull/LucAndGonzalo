@@ -18,25 +18,32 @@ public class PlayerUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        BaseAbility[] currentAbilities = player.GetComponentsInChildren<BaseAbility>();
-        string temp;
-        temp = "Player " + (player.PlayerNum + 1) + '\n';
-        foreach(BaseAbility ability in currentAbilities)
+        if(!player)
         {
-            switch(ability.type)
-            {
-                case BaseAbility.AbilityType.Melee:
-                    temp += "(B): ";
-                    break;
-                case BaseAbility.AbilityType.Ranged:
-                    temp += "(X): ";
-                    break;
-                case BaseAbility.AbilityType.Movement:
-                    temp += "(A): ";
-                    break;
-            }
-            temp += ability.abilityName + '\n';
+            text.text = "Press Start To Join";
         }
-        text.text = temp;
+        else
+        {
+            BaseAbility[] currentAbilities = player.GetComponentsInChildren<BaseAbility>();
+            string temp;
+            temp = "Player " + (player.PlayerNum + 1) + '\n';
+            foreach(BaseAbility ability in currentAbilities)
+            {
+                switch(ability.type)
+                {
+                    case BaseAbility.AbilityType.Melee:
+                        temp += "(B): ";
+                        break;
+                    case BaseAbility.AbilityType.Ranged:
+                        temp += "(X): ";
+                        break;
+                    case BaseAbility.AbilityType.Movement:
+                        temp += "(A): ";
+                        break;
+                }
+                temp += ability.abilityName + '\n';
+            }
+            text.text = temp;
+        }
 	}
 }

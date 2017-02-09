@@ -9,7 +9,7 @@ public class WinConditionCheck : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Events.GameLose.Subscribe(OnGameWin);
+        Events.GameWin.Subscribe(OnGameWin);
 
     }
 
@@ -22,6 +22,6 @@ public class WinConditionCheck : MonoBehaviour {
 
     private void OnDestroy()
     {
-        Events.GameLose.Unsubscribe(OnGameWin);
+        Events.GameWin.Unsubscribe(OnGameWin);
     }
 }

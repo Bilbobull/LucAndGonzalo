@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private void OnDestroy()
     {
         PlayerCount--;
+        InputEvents.Movement.Unsubscribe(OnMovement, PlayerNum);
     }
 
     void OnRangedAttack(InputEventInfo info)
