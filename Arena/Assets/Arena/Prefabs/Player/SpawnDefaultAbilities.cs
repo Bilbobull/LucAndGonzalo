@@ -16,9 +16,12 @@ public class SpawnDefaultAbilities : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        AddAbility(gameObject, DefaultMovementAbility);
-        AddAbility(gameObject, DefaultRangedAbility);
-        AddAbility(gameObject, DefaultMeleeAbility);
+        if(DefaultMovementAbility)
+            AddAbility(gameObject, DefaultMovementAbility);
+        if (DefaultRangedAbility)
+            AddAbility(gameObject, DefaultRangedAbility);
+        if (DefaultMeleeAbility)
+            AddAbility(gameObject, DefaultMeleeAbility);
         Destroy(this);
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public float TurnSpeed;
     public float speed = 1.0f;
     public string playertag = "Player";
     public int zigzagradius = 2;
@@ -16,31 +17,34 @@ public class EnemyBehavior : MonoBehaviour
     };
     public MovementType movement;
 
-    private GameObject ClosestPlayer;
+    public GameObject ClosestPlayer;
     private float timer = 0;
     private Vector3 Direction;
     private float PassedTime = 0;
      
-
     private void ChangeState()
     {
-        movement = (MovementType)Random.Range(1, 4);
-        timer = Random.Range(1.0f, 3.0f);
+        timer = Random.Range(1.0f, 5.0f);
         PassedTime = 0.0f;
+        movement = (MovementType)Random.Range(1, 4);
     }
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
         // Change to a random state
-        if (timer <= 0.0f || !ClosestPlayer)
-        {
-            ClosestPlayer = FindClosestPlayer();
-            ChangeState();
-        }
+        //if (timer <= 0.0f)
+        //{
+        //    ChangeState();
+        //}
+        ClosestPlayer = FindClosestPlayer();
         // Break if no target
-        if (!ClosestPlayer)
+        if (ClosestPlayer == null)
+        {
+            // Debug.Log("No Player!");
+            FindClosestPlayer();
             return;
+        }
         // Do movement
         switch (movement)
         {
@@ -64,7 +68,10 @@ public class EnemyBehavior : MonoBehaviour
                 break;
         }
         Direction.Normalize();
-        this.transform.position += Direction * speed * Time.deltaTime;
+        Quaternion target = Quaternion.LookRotation(Direction, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
+
+        transform.position += Direction * speed * Time.deltaTime;
     }
 
     private GameObject FindClosestPlayer()
@@ -74,8 +81,12 @@ public class EnemyBehavior : MonoBehaviour
         float smallestDist = float.PositiveInfinity;
         foreach (GameObject p in players)
         {
-            if (Vector3.Distance(p.transform.position, this.transform.position) < smallestDist)
+            float dist = Vector3.Distance(p.transform.position, transform.position);
+            if (dist < smallestDist)
+            {
                 closest = p;
+                smallestDist = dist;
+            }
         }
 
         return closest;
@@ -83,12 +94,12 @@ public class EnemyBehavior : MonoBehaviour
 
     private void WalkTowardsClosestPlayer()
     {
-        Direction = ClosestPlayer.transform.position - this.transform.position;
+        Direction = ClosestPlayer.transform.position - transform.position;
     }
 
     private void WalkAwayFromClosestPlayer()
     {
-        Direction = ClosestPlayer.transform.position - this.transform.position;
+        Direction = -(ClosestPlayer.transform.position - transform.position);
     }
 
     private void Wander()

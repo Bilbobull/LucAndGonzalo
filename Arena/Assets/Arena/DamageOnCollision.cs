@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageOnCollision : MonoBehaviour {
+public class DamageOnCollision : MonoBehaviour
+{
     public string DamagingUnitTag = "Player";
     public int Damage = 1;
+
+    void SetDamageTag(string newTag)
+    {
+        DamagingUnitTag = newTag;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +22,14 @@ public class DamageOnCollision : MonoBehaviour {
 		
 	}
 
-    //On collision damage the hit target 
-    public void OnCollisionEnter(Collision hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.tag == DamagingUnitTag)
+        if (other.gameObject.tag == DamagingUnitTag)
         {
-            Debug.Log(gameObject.name + " hit " + hit.gameObject.name + " for " + Damage);
-            hit.gameObject.GetComponent<HealthSystem>().SubstractHealth(Damage);
+            // Debug.Log(gameObject.name + " hit " + other.gameObject.name + " for " + Damage);
+            other.gameObject.GetComponent<HealthSystem>().SubstractHealth(Damage);
         }
     }
+
+
 }

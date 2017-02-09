@@ -17,7 +17,8 @@ public class PlayerMeleeAbility : BaseAbility
     {
         player = GetPlayer();
         meter = GetComponent<AbilityMeter>();
-        InputEvents.MeleeAttack.Subscribe(OnMeleeAbility, player.PlayerNum);
+        if(player)
+            InputEvents.MeleeAttack.Subscribe(OnMeleeAbility, player.PlayerNum);
 	}
 	
     void OnMeleeAbility(InputEventInfo info)
@@ -26,21 +27,40 @@ public class PlayerMeleeAbility : BaseAbility
         {
             case InputState.Triggered:
                 if(meter.IsFull)
-                    CreateAttack();
+                    CreateAttack("Enemy");
                 break;
         }
     }
 
-    void CreateAttack()
+    public GameObject CreateAttack(string target)
     {
+        GameObject attack;
         // Create the attack as a child of the player in local space
-        Instantiate(AttackPrefab, transform.parent, false);
+        attack = Instantiate(AttackPrefab, transform.parent, false);
         meter.Ammount = 0.0f;
+        // If we're attacking somthing, set the damage type if it has some
+        attack.GetComponentInChildren<DamageOnCollision>().DamagingUnitTag = target;
+
+        return attack;
     }
 
     private void OnDestroy()
     {
-        InputEvents.MeleeAttack.Unsubscribe(OnMeleeAbility, player.PlayerNum);
+        if(player)
+            InputEvents.MeleeAttack.Unsubscribe(OnMeleeAbility, player.PlayerNum);
+    }
+
+    public override bool ShouldUseAbility(GameObject currentTarget)
+    {
+        if (!meter.IsFull) return false;
+        return base.ShouldUseAbility(currentTarget);
+    }
+
+    // AI hooks
+    public override IEnumerator AIAttackRoutine(GameObject target)
+    {
+        CreateAttack(target.tag);
+        yield break;
     }
 
 }

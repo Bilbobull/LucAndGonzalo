@@ -70,5 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   abilityName: Punch
+  ai:
+    minAttackRadius: -1
+    maxAttackRadius: 5
   AttackPrefab: {fileID: 1127345576411812, guid: 701c924f9da43a24380263d4fd2a3a4d,
     type: 2}
