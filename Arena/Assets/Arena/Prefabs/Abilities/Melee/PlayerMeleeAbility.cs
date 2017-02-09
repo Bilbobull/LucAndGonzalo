@@ -33,7 +33,6 @@ public class PlayerMeleeAbility : BaseAbility
 
     void CreateAttack()
     {
-        Debug.Log("Creating Melee attack!");
         // Create the attack as a child of the player in local space
         Instantiate(AttackPrefab, transform.parent, false);
         meter.Ammount = 0.0f;

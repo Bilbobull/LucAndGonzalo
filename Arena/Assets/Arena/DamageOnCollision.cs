@@ -20,6 +20,9 @@ public class DamageOnCollision : MonoBehaviour {
     public void OnCollisionEnter(Collision hit)
     {
         if (hit.gameObject.tag == DamagingUnitTag)
+        {
+            Debug.Log(gameObject.name + " hit " + hit.gameObject.name + " for " + Damage);
             hit.gameObject.GetComponent<HealthSystem>().SubstractHealth(Damage);
+        }
     }
 }

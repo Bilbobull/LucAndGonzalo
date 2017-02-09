@@ -12,16 +12,11 @@ public class HealthSystem : MonoBehaviour {
         Health = MaxHealth;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void SubstractHealth(int hp)
     {
         Health -= hp;
-      //  if (Health <= 0)
-      //      Destroy(this.gameObject);
+        if (Health <= 0)
+            Destroy(this.gameObject);
     }
 
 }
