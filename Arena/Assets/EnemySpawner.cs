@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour {
                 // Get a random enemy
                 GameObject e = enemy[Random.Range(0, enemy.Length)];
 
-                Instantiate(e, pos, e.transform.rotation);
+                e = Instantiate(e, pos, e.transform.rotation);
 
                 enemies.Add(e);
             }
