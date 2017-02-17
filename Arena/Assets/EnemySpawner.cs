@@ -7,30 +7,55 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject[] enemy;
 
     public float SpawnRad;
-    public float spawnTime;
-    private float timeToSpawn;
+    public int BaseEnemyNum;
+    public int EnemyIncrement;
+    public int MaxEnemiesAtTime;
+    public float EnemySpawnTime;
+
+    private int Wave = -1;
+    private List<GameObject> enemies = new List<GameObject>();
+    private int EnemiesWave = 0;
+    private float TimeForSpawn;
 
     private void Start()
     {
-        timeToSpawn = spawnTime;
+        TimeForSpawn = EnemySpawnTime;
     }
 
     public void Update()
     {
-        timeToSpawn -= Time.deltaTime;
-        if(timeToSpawn <= 0)
+        foreach(GameObject e in enemies)
         {
-            timeToSpawn = spawnTime;
-            // Get a random position in a radius
-            Vector3 pos = transform.position + new Vector3(
-                Random.Range(0, SpawnRad),
-                0,
-                Random.Range(0, SpawnRad)
-            );
-            // Get a random enemy
-            GameObject e = enemy[Random.Range(0, enemy.Length)];
+            if (!e)
+                enemies.Remove(e);
+        }
 
-            Instantiate(e, pos, e.transform.rotation);
+        if(enemies.Count == 0 && EnemiesWave == 0)
+        {
+            ++Wave;
+            EnemiesWave = BaseEnemyNum + Wave * EnemyIncrement;
+        }
+
+        if(enemies.Count < MaxEnemiesAtTime && EnemiesWave > 0)
+        {
+            TimeForSpawn -= Time.deltaTime;
+            if (TimeForSpawn <= 0)
+            {
+                TimeForSpawn = EnemySpawnTime;
+                // Get a random position in a radius
+                Vector3 pos = transform.position + new Vector3(
+                    Random.Range(0, SpawnRad),
+                    0,
+                    Random.Range(0, SpawnRad)
+                );
+                // Get a random enemy
+                GameObject e = enemy[Random.Range(0, enemy.Length)];
+
+                Instantiate(e, pos, e.transform.rotation);
+
+                enemies.Add(e);
+            }
+            --EnemiesWave;
         }
     }
 
