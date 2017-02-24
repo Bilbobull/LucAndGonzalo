@@ -78,11 +78,11 @@ public class PlayerMovementAbility : BaseAbility
     }
 
     // AI Ability check hook
-    public override bool ShouldUseAbility(GameObject currentTarget)
+    public override bool AIShouldUseAbility(GameObject currentTarget)
     {
         if (meter.IsCharging || !meter.IsFull)
             return false;
-        return base.ShouldUseAbility(currentTarget);
+        return base.AIShouldUseAbility(currentTarget);
     }
 
     // AI Attack routine

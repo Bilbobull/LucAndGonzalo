@@ -123,6 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408829b1f548ab449971148a2a0eab17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materials:
+  - {r: 0.2627451, g: 0.52156866, b: 0.9607844, a: 0}
+  - {r: 0.86274517, g: 0.26666668, b: 0.21568629, a: 0}
+  - {r: 0.98823535, g: 0.74509805, b: 0.121568635, a: 0}
+  - {r: 0.0627451, g: 0.6156863, b: 0.34901962, a: 0}
+  materialIdx: 0
 --- !u!114 &114397341303992568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,11 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c92c0410cf0d947aff14df1919752b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMaterials:
-  - {r: 0.2627451, g: 0.52156866, b: 0.9607844, a: 0}
-  - {r: 0.86274517, g: 0.26666668, b: 0.21568629, a: 0}
-  - {r: 0.98823535, g: 0.74509805, b: 0.121568635, a: 0}
-  - {r: 0.0627451, g: 0.6156863, b: 0.34901962, a: 0}
   Speed: 5
   TurnSpeed: 5
 --- !u!114 &114952876904781090

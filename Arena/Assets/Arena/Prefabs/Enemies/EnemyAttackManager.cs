@@ -19,7 +19,7 @@ public class EnemyAttackManager : MonoBehaviour
 
         foreach (BaseAbility a in abilities)
         {
-            if(a.ShouldUseAbility(target))
+            if(a.AIShouldUseAbility(target))
             {
                 a.StartCoroutine(a.AIAttackRoutine(target));
                 break;

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4898253510048068}
   - component: {fileID: 114485709179649574}
   - component: {fileID: 111248835398167828}
+  - component: {fileID: 114195371343456696}
   m_Layer: 0
   m_Name: LongswordAttack
   m_TagString: Untagged
@@ -39,7 +40,6 @@ GameObject:
   - component: {fileID: 33989849915714830}
   - component: {fileID: 65906001502396632}
   - component: {fileID: 23187674059191854}
-  - component: {fileID: 114334334049411816}
   - component: {fileID: 114402338540361448}
   - component: {fileID: 54947227928332430}
   m_Layer: 0
@@ -156,15 +156,15 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 1
   m_CullingType: 0
---- !u!114 &114334334049411816
+--- !u!114 &114195371343456696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1175914508789816}
+  m_GameObject: {fileID: 1064304835701772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408829b1f548ab449971148a2a0eab17, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a06b82931ffa274ca741c9b2efa9382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114402338540361448

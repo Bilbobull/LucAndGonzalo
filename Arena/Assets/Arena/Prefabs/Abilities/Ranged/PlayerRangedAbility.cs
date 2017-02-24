@@ -80,11 +80,12 @@ public class PlayerRangedAbility : BaseAbility
         if (player)
         {
             proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
-            proj.SendMessage("SetAttacker", GetComponentInParent<PlayerController>());
+            proj.SendMessage("SetAttacker", gameObject);
         }
         else if (target)
         {
             proj.GetComponentInChildren<DamageOnCollision>().DamagingUnitTag = target.tag;
+            proj.SendMessage("SetAttacker", gameObject);
         }
     }
 
@@ -97,10 +98,10 @@ public class PlayerRangedAbility : BaseAbility
         }
     }
 
-    public override bool ShouldUseAbility(GameObject currentTarget)
+    public override bool AIShouldUseAbility(GameObject currentTarget)
     {
         if (!meter.IsEmpty || meter.IsCharging) return false;
-        return base.ShouldUseAbility(currentTarget);
+        return base.AIShouldUseAbility(currentTarget);
     }
 
     public override IEnumerator AIAttackRoutine(GameObject target)

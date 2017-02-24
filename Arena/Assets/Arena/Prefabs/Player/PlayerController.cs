@@ -2,26 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
-    public Color[] PlayerMaterials;
-
+public class PlayerController : MonoBehaviour
+{
     public int PlayerNum
-    {   get; private set;   }
+    { get; private set; }
+
     static public int PlayerCount
     { get; private set; }
+
     public float Speed;
+
     public float TurnSpeed;
+
 	// Use this for initialization
 	void Start ()
     {
         // Get a new player number
         PlayerNum = PlayerCount;
         PlayerCount++;
+
         Debug.Log("Player " + PlayerNum + " has joined!");
+
         // Subscribe to our movement events
         InputEvents.Movement.Subscribe(OnMovement, PlayerNum);
-
     }
 
     private void OnDestroy()
@@ -29,43 +32,6 @@ public class PlayerController : MonoBehaviour {
         PlayerCount--;
         InputEvents.Movement.Unsubscribe(OnMovement, PlayerNum);
     }
-
-    void OnRangedAttack(InputEventInfo info)
-    {
-        switch(info.inputState)
-        {
-            case InputState.Triggered:
-                Debug.Log("Starting ranged attack charge");
-                break;
-
-            case InputState.Active:
-                Debug.Log("Ranged attack charging!");
-                break;
-
-            case InputState.Released:
-                Debug.Log("Releasing ranged attack");
-                break;
-        }
-    }
-
-    void OnMeleeAttack(InputEventInfo info)
-    {
-        switch (info.inputState)
-        {
-            case InputState.Triggered:
-                Debug.Log("Starting meleee attack charge");
-                break;
-
-            case InputState.Active:
-                Debug.Log("Melee attack charging!");
-                break;
-
-            case InputState.Released:
-                Debug.Log("Releasing melee attack");
-                break;
-        }
-    }
-
 
     void OnMovement(InputEventInfo info)
     {

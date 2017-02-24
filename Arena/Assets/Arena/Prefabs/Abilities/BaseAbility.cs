@@ -28,7 +28,7 @@ public class BaseAbility : MonoBehaviour
     public AISettings ai;
 
     // Defaults to a radius min/max
-    public virtual bool ShouldUseAbility(GameObject currentTarget)
+    public virtual bool AIShouldUseAbility(GameObject currentTarget)
     {
         float dist = (transform.position - currentTarget.transform.position).sqrMagnitude;
 
