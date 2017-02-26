@@ -24,11 +24,8 @@ public class EnemySpawner : MonoBehaviour {
 
     public void Update()
     {
-        foreach(GameObject e in enemies)
-        {
-            if (!e)
-                enemies.Remove(e);
-        }
+        // Remove all dead enemies
+        enemies.RemoveAll((e) => !e);
 
         if(enemies.Count == 0 && EnemiesWave == 0)
         {

@@ -23,10 +23,11 @@ GameObject:
   - component: {fileID: 65494726684301902}
   - component: {fileID: 23358699447841206}
   - component: {fileID: 54440826654881910}
-  - component: {fileID: 114427341726457944}
-  - component: {fileID: 114952876904781090}
   - component: {fileID: 114351826711736494}
-  - component: {fileID: 114397341303992568}
+  - component: {fileID: 114029160540461550}
+  - component: {fileID: 114166404749493242}
+  - component: {fileID: 114417901001876888}
+  - component: {fileID: 114222789085454916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438236136017592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.13, y: 2.42, z: -10.09}
+  m_LocalPosition: {x: 10.56, y: 2.42, z: -0.52}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,6 +113,70 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114029160540461550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438236136017592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f19aa50170962418ae72a4b04ba0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 15
+  accelerationTime: 0.5
+  gravity: 5
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  moveDir: {x: 0, y: 0, z: 0}
+  height: 1
+  radius: 0.5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxSteepness: 90
+--- !u!114 &114166404749493242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438236136017592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c92c0410cf0d947aff14df1919752b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  TurnSpeed: 0
+--- !u!114 &114222789085454916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438236136017592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e082ed7322edca4b80bd586fc4728e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5
 --- !u!114 &114351826711736494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +194,7 @@ MonoBehaviour:
   - {r: 0.98823535, g: 0.74509805, b: 0.121568635, a: 0}
   - {r: 0.0627451, g: 0.6156863, b: 0.34901962, a: 0}
   materialIdx: 0
---- !u!114 &114397341303992568
+--- !u!114 &114417901001876888
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -140,34 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e690a0ca080eb49b9d7614fe5c99a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultMovementAbility: {fileID: 114799128110965752, guid: 037b823e1faf5e34baed7af5bd84088a,
+  DefaultMovementAbility: {fileID: 114549948776034454, guid: 5720a0bb5ef7959468270888c9f3b30d,
     type: 2}
-  DefaultRangedAbility: {fileID: 114055541869390676, guid: f80ae7fcb10d9fa4b80c6292d5c415dd,
+  DefaultRangedAbility: {fileID: 114799128110965752, guid: 037b823e1faf5e34baed7af5bd84088a,
     type: 2}
-  DefaultMeleeAbility: {fileID: 114549948776034454, guid: 5720a0bb5ef7959468270888c9f3b30d,
+  DefaultMeleeAbility: {fileID: 114055541869390676, guid: f80ae7fcb10d9fa4b80c6292d5c415dd,
     type: 2}
---- !u!114 &114427341726457944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438236136017592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c92c0410cf0d947aff14df1919752b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 5
-  TurnSpeed: 5
---- !u!114 &114952876904781090
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1438236136017592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e082ed7322edca4b80bd586fc4728e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 10
