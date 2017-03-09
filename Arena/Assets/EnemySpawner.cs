@@ -51,8 +51,9 @@ public class EnemySpawner : MonoBehaviour {
                 e = Instantiate(e, pos, e.transform.rotation);
 
                 enemies.Add(e);
+                --EnemiesWave;
             }
-            --EnemiesWave;
+
         }
     }
 
