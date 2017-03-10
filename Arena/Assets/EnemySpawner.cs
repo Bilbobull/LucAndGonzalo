@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -12,14 +13,20 @@ public class EnemySpawner : MonoBehaviour {
     public int MaxEnemiesAtTime;
     public float EnemySpawnTime;
 
-    private int Wave = -1;
+    public int Wave = -1;
     private List<GameObject> enemies = new List<GameObject>();
     private int EnemiesWave = 0;
     private float TimeForSpawn;
 
+    private const float NEXT_ROUND_TIMER = 3.0f;
+    public float NextRoundTimer;
+
+    public bool BetweenWaves = false;
+
     private void Start()
     {
         TimeForSpawn = EnemySpawnTime;
+        NextRoundTimer = NEXT_ROUND_TIMER;
     }
 
     public void Update()
@@ -27,11 +34,23 @@ public class EnemySpawner : MonoBehaviour {
         // Remove all dead enemies
         enemies.RemoveAll((e) => !e);
 
-        if(enemies.Count == 0 && EnemiesWave == 0)
+        if (enemies.Count == 0 && EnemiesWave == 0)
         {
-            ++Wave;
-            EnemiesWave = BaseEnemyNum + Wave * EnemyIncrement;
+            if (NextRoundTimer > 0.0f)
+            {
+                BetweenWaves = true;
+                NextRoundTimer -= Time.deltaTime;
+            }
+
+            else
+            {
+                BetweenWaves = false;
+                ++Wave;
+                EnemiesWave = BaseEnemyNum + Wave * EnemyIncrement;
+                NextRoundTimer = NEXT_ROUND_TIMER;
+            }
         }
+
 
         if(enemies.Count < MaxEnemiesAtTime && EnemiesWave > 0)
         {
