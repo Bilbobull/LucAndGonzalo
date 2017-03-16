@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 124729788443516924}
   - component: {fileID: 81840436733839596}
   - component: {fileID: 114750940530025530}
+  - component: {fileID: 45450416372616470}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,8 +38,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827963509601110}
-  m_LocalRotation: {x: 0.1276587, y: -0.78643143, z: 0.17341544, w: 0.57892656}
-  m_LocalPosition: {x: 30.19, y: 27.8, z: 9.47}
+  m_LocalRotation: {x: 0.21764852, y: -0.7299363, z: 0.26965472, w: 0.58915913}
+  m_LocalPosition: {x: 52.085865, y: 50.97463, z: -4.8760185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,8 +53,8 @@ Camera:
   m_GameObject: {fileID: 1827963509601110}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.222673, g: 0.29984277, b: 0.341, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -78,6 +79,14 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!45 &45450416372616470
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827963509601110}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 7e4024464a7f63a408ac3c1225f094f9, type: 2}
 --- !u!81 &81840436733839596
 AudioListener:
   m_ObjectHideFlags: 1
@@ -105,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anchor: {fileID: 0}
   Sensitivity: 20
-  Distance: 45
+  Distance: 70
   SmoothTime: 1
   MaxSpeed: 15
   MaxHeight: 0.75

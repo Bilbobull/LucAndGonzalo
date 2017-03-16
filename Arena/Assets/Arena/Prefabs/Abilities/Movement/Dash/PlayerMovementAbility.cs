@@ -53,7 +53,7 @@ public class PlayerMovementAbility : BaseAbility
         meter.StartCharging();
         if(player)
         {
-            player.Speed *= SpeedBoostAmount;
+            GetComponentInParent<CharacterMovementController>().maxSpeed *= SpeedBoostAmount;
         }
         else
         {
@@ -66,7 +66,7 @@ public class PlayerMovementAbility : BaseAbility
         meter.EndCharging();
         if (player)
         {
-            player.Speed /= SpeedBoostAmount;
+            GetComponentInParent<CharacterMovementController>().maxSpeed /= SpeedBoostAmount;
         }
         else
         {

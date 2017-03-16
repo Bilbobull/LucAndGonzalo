@@ -9,12 +9,17 @@ public class CharacterMovementController : MonoBehaviour {
     [Tooltip("How fast the player moves at max speed.")]
     public float maxSpeed;
 
+    [Tooltip("How fast the player moves at max speed.")]
+    public float turnSpeed;
+
     // How fast the player moves at max speed (the t axis of the accelerationCurve
     [Tooltip("How long until the player moves at max speed.")]
     public float accelerationTime;
 
     public float currentSpeed
     { get; private set; }
+
+
 
     public float gravity;
 
@@ -57,7 +62,7 @@ public class CharacterMovementController : MonoBehaviour {
         bool isAccelerating = moveDir.sqrMagnitude >= Mathf.Epsilon;
         // Increase acceleration
         if(isAccelerating)
-            accelerationPercent += (Time.fixedDeltaTime / accelerationTime);
+            accelerationPercent += (Time.fixedDeltaTime/ accelerationTime);
         else
             accelerationPercent = 0.0f;
         // Clamp if necessary
@@ -89,7 +94,7 @@ public class CharacterMovementController : MonoBehaviour {
         // Compute ground contact information
         Ray down = new Ray(transform.position, Vector3.down);
         RaycastHit hitInfo;
-        bool castHit = Physics.Raycast(down, out hitInfo, height + float.Epsilon);
+        bool castHit = Physics.Raycast(down, out hitInfo, height + float.Epsilon, collisionMask, QueryTriggerInteraction.Ignore);
         // Update ground info
         if (castHit)
         {
@@ -120,7 +125,15 @@ public class CharacterMovementController : MonoBehaviour {
         if(CheckPosition(moveDir, mag * currentSpeed * Time.fixedDeltaTime))
         {
             // Translate in that direction
+            GetComponent<Rigidbody>().AddForce(moveDir, ForceMode.Acceleration);
             transform.position += moveDir * currentSpeed * Time.fixedDeltaTime;
+        }
+
+        // Rotate towards our movement direction
+        if (moveDir.sqrMagnitude > 0.01)
+        {
+            Quaternion target = Quaternion.LookRotation(moveDir, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, turnSpeed * Time.fixedDeltaTime);
         }
     }
 
@@ -128,13 +141,13 @@ public class CharacterMovementController : MonoBehaviour {
     {
         // Just spherecast at it
         Ray movement = new Ray(transform.position, moveDir);
-        bool hit = Physics.SphereCast(movement, radius, dist, collisionMask);
+        bool hit = Physics.SphereCast(movement, radius, dist, collisionMask, QueryTriggerInteraction.Ignore);
         return !hit;
     }
 
     private void ApplyGravity()
     {
-        transform.position += Vector3.down * gravity * Time.deltaTime;
+        transform.position += Vector3.down * gravity * Time.fixedDeltaTime;
     }
 
     private void OnDrawGizmosSelected()
