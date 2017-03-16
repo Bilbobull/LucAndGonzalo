@@ -31,7 +31,8 @@ public class PlayerUI : MonoBehaviour {
         if(!player)
         {
             text.text = "Press Start To Join";
-            hearts[0].SetActive(false);
+            for (int i = 0; i < hearts.Count; ++i)
+              hearts[i].SetActive(false);
         }
         else
         {
