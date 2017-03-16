@@ -19,4 +19,9 @@ public class HealthSystem : MonoBehaviour {
             Destroy(this.gameObject);
     }
 
+    public int GetHealth()
+    {
+        return Health;
+    }
+
 }

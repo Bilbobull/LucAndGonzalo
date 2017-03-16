@@ -9,10 +9,20 @@ public class PlayerUI : MonoBehaviour {
 
     Text text;
 
+    public GameObject heartObj;
+    public List<GameObject> hearts = new List<GameObject>();
+    private HealthSystem health;
+
 	// Use this for initialization
 	void Start ()
     {
         text = GetComponent<Text>();
+        health = player.GetComponent<HealthSystem>();
+        for(int i = 0; i < health.MaxHealth; ++i)
+        {
+            GameObject temp = Instantiate(heartObj,transform);
+            hearts.Add(temp);
+        }
 	}
 	
 	// Update is called once per frame
@@ -21,6 +31,7 @@ public class PlayerUI : MonoBehaviour {
         if(!player)
         {
             text.text = "Press Start To Join";
+            hearts[0].SetActive(false);
         }
         else
         {
@@ -44,6 +55,16 @@ public class PlayerUI : MonoBehaviour {
                 temp += ability.abilityName + '\n';
             }
             text.text = temp;
+
+            int hp = health.GetHealth();
+            
+            for (int i = 0; i < health.MaxHealth; ++i)
+            {
+                if (i < hp)
+                    hearts[i].SetActive(true);
+                else
+                    hearts[i].SetActive(false);
+            }
         }
 	}
 }
