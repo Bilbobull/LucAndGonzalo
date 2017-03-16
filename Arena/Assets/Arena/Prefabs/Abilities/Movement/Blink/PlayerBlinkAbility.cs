@@ -7,6 +7,8 @@ public class PlayerBlinkAbility : BaseAbility
     [Tooltip("How far we blink")]
     public float BlinkDistance;
 
+    public GameObject BlinkEffect;
+
     PlayerController player;
     AbilityMeter meter;
 
@@ -33,6 +35,8 @@ public class PlayerBlinkAbility : BaseAbility
 
     void StartMovementAbility()
     {
+        if (BlinkEffect)
+            Instantiate(BlinkEffect, transform.position, transform.rotation);
         player.transform.position += player.transform.forward * BlinkDistance;
         meter.Ammount = 0.0f;
     }
