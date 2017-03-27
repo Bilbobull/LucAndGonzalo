@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class ColorFromParent : MonoBehaviour
 {
-    
+
+    Renderer GetParentRenderer()
+    {
+        // We only want our own renderer as a last resort 
+        // Grumble grumble ...
+        Renderer r;
+        if (transform.parent)
+            r = transform.parent.GetComponentInParent<Renderer>();
+        else
+            r = GetComponent<Renderer>();
+        return r;
+    }
 
 	// Use this for initialization
 	void Start ()
     {
-        Renderer parentRend = GetComponentInParent<Renderer>();
+
+        Renderer parentRend = GetParentRenderer();
         Renderer rend = GetComponentInChildren<Renderer>();
 
         if(parentRend && rend)
