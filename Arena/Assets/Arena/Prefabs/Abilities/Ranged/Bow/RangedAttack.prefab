@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 120864722199279372}
   - component: {fileID: 114062979334387780}
   - component: {fileID: 114381027886591894}
-  - component: {fileID: 114837157485162762}
+  - component: {fileID: 114345345099680646}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -155,6 +155,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumPoints: 25
+--- !u!114 &114345345099680646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935858921591998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca529ee00f23b64ba345d8f059a0550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layers:
+    serializedVersion: 2
+    m_Bits: 256
+  tags: []
+  Spring: 0
+  Damper: 100
+  OnlyOnce: 1
 --- !u!114 &114381027886591894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,21 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Remaining: 1
---- !u!114 &114837157485162762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1935858921591998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1a7d971b7802c4e99c8cc432a8873a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags: []
-  layers:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!120 &120864722199279372
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -17,13 +17,7 @@ public class DestroyOnCollision : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         if (IsDestroytarget(other.gameObject))
-        {
-            Debug.Log("Destroy");
             Destroy(gameObject);
-        }
-        else
-            Debug.Log("no destroy" + other.gameObject);
-
     }
 
     private static bool InMask(LayerMask mask, int layer)
