@@ -19,8 +19,6 @@ public class CharacterMovementController : MonoBehaviour {
     public float currentSpeed
     { get; private set; }
 
-
-
     public float gravity;
 
     // How the player accelerates

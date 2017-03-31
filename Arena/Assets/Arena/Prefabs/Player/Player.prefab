@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114166404749493242}
   - component: {fileID: 114417901001876888}
   - component: {fileID: 114222789085454916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 33547430551615454}
   - component: {fileID: 23344891904279320}
   - component: {fileID: 114878669206678390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438236136017592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.56, y: 2.42, z: -0.52}
+  m_LocalPosition: {x: 10.68, y: 2.5, z: -14.45}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 4185082039663376}
@@ -194,18 +194,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f19aa50170962418ae72a4b04ba0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 15
   turnSpeed: 5
-  accelerationTime: 0.5
+  accelerationTime: 1
   gravity: 5
   accelerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
+      value: 0.51008064
+      inSlope: 1.3234376
+      outSlope: 1.3234376
       tangentMode: 0
     - serializedVersion: 2
       time: 1
