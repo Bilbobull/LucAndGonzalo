@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 54852169718035086}
   - component: {fileID: 114320485767838234}
   - component: {fileID: 114287049366295618}
+  - component: {fileID: 114240066475462650}
   m_Layer: 0
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -112,6 +113,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114240066475462650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394786794765744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f19aa50170962418ae72a4b04ba0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  turnSpeed: 2
+  accelerationTime: 1
+  gravity: 5
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.51008064
+      inSlope: 1.3234376
+      outSlope: 1.3234376
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  moveDir: {x: 0, y: 0, z: 0}
+  height: 1
+  radius: 0.5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxSteepness: 90
 --- !u!114 &114287049366295618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,11 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120b2e2578f30334497d112800d8e070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TurnSpeed: 5
-  speed: 0
   playertag: Player
   zigzagradius: 100
-  movement: 1
+  movement: 0
   ClosestPlayer: {fileID: 0}
 --- !u!114 &114996330598161800
 MonoBehaviour:

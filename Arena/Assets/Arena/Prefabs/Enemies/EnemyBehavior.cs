@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterMovementController))]
 public class EnemyBehavior : MonoBehaviour
 {
-    public float TurnSpeed;
-    public float speed = 1.0f;
     public string playertag = "Player";
     public int zigzagradius = 2;
 
@@ -20,15 +19,21 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject ClosestPlayer;
     private float timer = 0;
     private Vector3 MoveDirection;
-    private Vector3 LookDirection;
     private float PassedTime = 0;
-     
+    private CharacterMovementController controller;
+
     private void ChangeState()
     {
         timer = Random.Range(1.0f, 5.0f);
         PassedTime = 0.0f;
         movement = (MovementType)Random.Range(1, 4);
     }
+
+    void Start()
+    {
+        controller = GetComponent<CharacterMovementController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -69,10 +74,12 @@ public class EnemyBehavior : MonoBehaviour
                 break;
         }
         MoveDirection.Normalize();
-        Quaternion target = Quaternion.LookRotation(LookDirection, Vector3.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
+        controller.moveDir = MoveDirection;
 
-        transform.position += MoveDirection * speed * Time.deltaTime;
+        //Quaternion target = Quaternion.LookRotation(LookDirection, Vector3.up);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, target, TurnSpeed * Time.deltaTime);
+
+        //transform.position += MoveDirection * speed * Time.deltaTime;
     }
 
     private GameObject FindClosestPlayer()
@@ -96,19 +103,17 @@ public class EnemyBehavior : MonoBehaviour
     private void WalkTowardsClosestPlayer()
     {
         MoveDirection = ClosestPlayer.transform.position - transform.position;
-        LookDirection = MoveDirection;
+        // LookDirection = MoveDirection;
     }
 
     private void WalkAwayFromClosestPlayer()
     {
         MoveDirection = -(ClosestPlayer.transform.position - transform.position);
-        LookDirection = -MoveDirection;
     }
 
     private void Wander()
     {
         MoveDirection = new Vector3(Random.value, 0, Random.value);
-        LookDirection = MoveDirection;
     }
 
     private void ZigZag()
@@ -120,7 +125,6 @@ public class EnemyBehavior : MonoBehaviour
         Vector3 RightVec = new Vector3(-MoveDirection.z, 0, MoveDirection.x) * (zigzagradius* Mathf.Cos(PassedTime));
 
         MoveDirection += RightVec;
-        LookDirection = MoveDirection;
     }
 
 }

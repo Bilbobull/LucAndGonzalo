@@ -51,30 +51,13 @@ public class PlayerMovementAbility : BaseAbility
     void StartMovementAbility()
     {
         meter.StartCharging();
-        if(player)
-        {
-            GetComponentInParent<CharacterMovementController>().maxSpeed *= SpeedBoostAmount;
-        }
-        else
-        {
-            GetComponentInParent<EnemyBehavior>().speed *= SpeedBoostAmount;
-        }
+        GetComponentInParent<CharacterMovementController>().maxSpeed *= SpeedBoostAmount;
     }
 
     void EndMovementAbility()
     {
         meter.EndCharging();
-        if (player)
-        {
-            GetComponentInParent<CharacterMovementController>().maxSpeed /= SpeedBoostAmount;
-        }
-        else
-        {
-            EnemyBehavior enemy = GetComponentInParent<EnemyBehavior>();
-            if(enemy)
-                enemy.speed /= SpeedBoostAmount;
-        }
-
+        GetComponentInParent<CharacterMovementController>().maxSpeed /= SpeedBoostAmount;
     }
 
     // AI Ability check hook

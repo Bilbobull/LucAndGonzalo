@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaceTargets : MonoBehaviour
 {
-    public GameObjects targets;
+    public GameObject[] targets;
 	// Use this for initialization
 	void Start () {
 		
