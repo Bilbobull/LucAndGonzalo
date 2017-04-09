@@ -9,6 +9,7 @@ public class PlayerMovementAbility : BaseAbility
     public float SpeedBoostAmount;
 
     PlayerController player;
+    CharacterMovementController controller;
     AbilityMeter meter;
 
 	// Use this for initialization
@@ -51,13 +52,15 @@ public class PlayerMovementAbility : BaseAbility
     void StartMovementAbility()
     {
         meter.StartCharging();
-        GetComponentInParent<CharacterMovementController>().maxSpeed *= SpeedBoostAmount;
+        if(controller)
+            controller.maxSpeed *= SpeedBoostAmount;
     }
 
     void EndMovementAbility()
     {
         meter.EndCharging();
-        GetComponentInParent<CharacterMovementController>().maxSpeed /= SpeedBoostAmount;
+        if(controller)
+            controller.maxSpeed /= SpeedBoostAmount;
     }
 
     // AI Ability check hook
