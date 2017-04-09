@@ -38,7 +38,7 @@ public class PlayerBlinkAbility : BaseAbility
         if (BlinkEffect)
             Instantiate(BlinkEffect, transform.position, transform.rotation);
         player.transform.position += player.transform.forward * BlinkDistance;
-        meter.Ammount = 0.0f;
+        meter.Amount = 0.0f;
     }
 
     private void OnDestroy()

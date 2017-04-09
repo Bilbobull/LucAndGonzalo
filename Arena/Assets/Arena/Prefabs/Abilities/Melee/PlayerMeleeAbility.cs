@@ -37,7 +37,7 @@ public class PlayerMeleeAbility : BaseAbility
         GameObject attack;
         // Create the attack as a child of the player in local space
         attack = Instantiate(AttackPrefab, transform.parent, false);
-        meter.Ammount = 0.0f;
+        meter.Amount = 0.0f;
         // If we're attacking somthing, set the damage type if it has some
         attack.GetComponentInChildren<DamageOnCollision>().DamagingUnitTag = target;
 

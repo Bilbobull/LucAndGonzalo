@@ -6,7 +6,7 @@ public class AbilityMeter : MonoBehaviour
 {
     // How much of our ability we actually have
     [Range(0, 1)]
-    public float Ammount;
+    public float Amount;
 
     [Tooltip("The minimum ammount we have to charge for a successfull attack")]
     [Range(0, 1)]
@@ -29,7 +29,7 @@ public class AbilityMeter : MonoBehaviour
     {
         get
         {
-            return Ammount >= 1.0f;
+            return Amount >= 1.0f;
         }
     }
 
@@ -37,7 +37,7 @@ public class AbilityMeter : MonoBehaviour
     {
         get
         {
-            return Ammount <= 0.0f;
+            return Amount <= 0.0f;
         }
     }
 
@@ -61,13 +61,13 @@ public class AbilityMeter : MonoBehaviour
     {
 	    if(IsCharging)
         {
-            Ammount += ChargeRate * Time.deltaTime;
+            Amount += ChargeRate * Time.deltaTime;
         }
         else
         {
-            Ammount += RechargeRate * Time.deltaTime;
+            Amount += RechargeRate * Time.deltaTime;
         }
-        Ammount = Mathf.Clamp01(Ammount);
+        Amount = Mathf.Clamp01(Amount);
     }
 
     // Returns how much the meter has charged [0..1] if it is at least MinCharge
@@ -75,10 +75,10 @@ public class AbilityMeter : MonoBehaviour
     {
         Debug.Assert(IsCharging == true);
         IsCharging = false;
-        if (Ammount < MinCharge)
+        if (Amount < MinCharge)
             return 0.0f;
         else
-            return Ammount;
+            return Amount;
     }
 
     private void OnDestroy()

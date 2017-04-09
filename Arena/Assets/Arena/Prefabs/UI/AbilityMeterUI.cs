@@ -54,9 +54,9 @@ public class AbilityMeterUI : MonoBehaviour {
     {
         Vector2 newSize = rect.sizeDelta;
         if(invert)
-            newSize.x = originalWidth * (1.0f - meter.Ammount);
+            newSize.x = originalWidth * (1.0f - meter.Amount);
         else
-            newSize.x = originalWidth * meter.Ammount;
+            newSize.x = originalWidth * meter.Amount;
 
         rect.sizeDelta = newSize;
     }

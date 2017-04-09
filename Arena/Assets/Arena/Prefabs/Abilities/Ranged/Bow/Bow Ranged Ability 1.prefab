@@ -60,6 +60,8 @@ MonoBehaviour:
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 862c0148605154d4eb4784495bac94ba,
     type: 2}
   player: {fileID: 0}
+  AimIndicatorPrefab: {fileID: 1221850963533860, guid: e31d36480fc0da9489b2365fdad4e196,
+    type: 2}
 --- !u!114 &114786772258083430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammount: 0
+  Amount: 0
   MinCharge: 0.5
   RechargeRate: -Infinity
   ChargeRate: 1

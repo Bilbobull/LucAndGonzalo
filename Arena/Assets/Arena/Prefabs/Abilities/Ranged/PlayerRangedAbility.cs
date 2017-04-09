@@ -8,6 +8,10 @@ public class PlayerRangedAbility : BaseAbility
 {
     public GameObject RangedAttackPrefab;
     public PlayerController player;
+
+    public GameObject AimIndicatorPrefab;
+    private GameObject AimIndicatorInstance;
+
     private AbilityMeter meter;
 
     float SpeedMult = 0.1f;
@@ -45,10 +49,39 @@ public class PlayerRangedAbility : BaseAbility
             player.Speed *= SpeedMult;
         }
         meter.StartCharging();
+        // Create our aiming instance if we have one
+        if(AimIndicatorPrefab)
+        {
+            AimIndicatorInstance = Instantiate(AimIndicatorPrefab, transform);
+            AimIndicatorInstance.SendMessage("SetAttacker", gameObject);
+        }
+    }
+
+    void Update()
+    {
+        if(meter.IsCharging && AimIndicatorInstance)
+        {
+            // Draw our aiming thingy
+            Vector3 dir = transform.forward;
+            // TODO maybe wrap this logic in a component 
+            //      so we can just pass a direction/amount & do fancy stuff somewhere else
+            const float scale = 5.0f;
+            Vector3 s = transform.position + dir * meter.Amount * scale;
+            Vector3 e = s + dir * meter.Amount * scale;
+            LineRenderer line = AimIndicatorInstance.GetComponent<LineRenderer>();
+
+            line.numPositions = 2;
+
+            line.SetPosition(0, s);
+            line.SetPosition(1, e);
+
+            Debug.DrawLine(s, e, Color.red, 0.0f, false);
+        }
     }
 
     void OnChargeMovement(InputEventInfo info)
     {
+        // NOTE maybe just set speed to 0 while we aim?
         // Face movement direction
         Vector3 lookDir = new Vector3(info.dualAxisValue.x, 0, info.dualAxisValue.y);
         // Apply the inverse of the camera rotation and normalize so that it's screen relative
@@ -69,6 +102,9 @@ public class PlayerRangedAbility : BaseAbility
         float charge = meter.EndCharging();
         if (charge > 0.0f)
             DoAttack(charge, target);
+        // Clean up our aim indicator if we need to
+        if (AimIndicatorInstance)
+            Destroy(AimIndicatorInstance);
     }
 
     void DoAttack(float charge, GameObject target)
@@ -109,7 +145,7 @@ public class PlayerRangedAbility : BaseAbility
         StartCharging();
         float chargeAmount = UnityEngine.Random.Range(meter.MinCharge, 1.0f);
         yield return new WaitUntil(() => {
-            return (meter.Ammount >= chargeAmount) ||
+            return (meter.Amount >= chargeAmount) ||
                 (target == null);
         });
         EndCharging(target);
