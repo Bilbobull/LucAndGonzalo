@@ -19,6 +19,9 @@ public class SlowOrbitCam : MonoBehaviour
     [Range(-1, 1)]
     public float MinHeight;
 
+    public Vector2 input
+        { set; private get; }
+
     Vector3 currentVelocity;
     Vector3 targetOffset;
 
@@ -32,11 +35,15 @@ public class SlowOrbitCam : MonoBehaviour
     void OnCameraMovement(InputEventInfo info)
     {
         // Get their input as camera local up & right
-        Vector3 input = new Vector3(info.dualAxisValue.x, info.dualAxisValue.y, 0);
+        input = new Vector2(info.dualAxisValue.x, info.dualAxisValue.y);
+    }
+
+    void ApplyMovement()
+    {
         // Transform into world space
-        input = transform.TransformDirection(input);
+        Vector3 localDir = transform.TransformDirection(new Vector3(input.x, input.y, 0));
         // move our target offset
-        targetOffset += input * Sensitivity * Time.deltaTime;
+        targetOffset += localDir * Sensitivity * Time.deltaTime;
         // Apply the height constraints
         targetOffset.y = Mathf.Clamp(targetOffset.y, Distance * MinHeight, Distance * MaxHeight);
         // Apply the distance constraint
@@ -47,6 +54,8 @@ public class SlowOrbitCam : MonoBehaviour
 
 	void FixedUpdate ()
     {
+        // Apply any inputs
+        ApplyMovement();
         // Update our rotation
         transform.LookAt(Anchor, Vector3.up);
         // Smoothdamp to target offset

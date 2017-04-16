@@ -12,7 +12,7 @@ public class LineTrail : MonoBehaviour {
 	void Start ()
     {
         line = GetComponent<LineRenderer>();
-        line.numPositions = NumPoints;
+        line.positionCount = NumPoints;
         for(int i = 0; i < NumPoints; ++i)
         {
             line.SetPosition(i, transform.position);
@@ -23,7 +23,7 @@ public class LineTrail : MonoBehaviour {
 	void Update ()
     {
         // Move all points down one spot
-		for(int i = line.numPositions - 2; i >= 0; --i)
+		for(int i = line.positionCount - 2; i >= 0; --i)
         {
             Vector3 temp = line.GetPosition(i);
             line.SetPosition(i+1, temp);

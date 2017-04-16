@@ -70,7 +70,7 @@ public class PlayerRangedAbility : BaseAbility
             Vector3 e = s + dir * meter.Amount * scale;
             LineRenderer line = AimIndicatorInstance.GetComponent<LineRenderer>();
 
-            line.numPositions = 2;
+            line.positionCount = 2;
 
             line.SetPosition(0, s);
             line.SetPosition(1, e);

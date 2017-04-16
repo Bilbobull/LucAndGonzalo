@@ -12,7 +12,9 @@ public class HealthSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Health = MaxHealth;
-        score = GameObject.Find("Canvas/Score_UI").GetComponent<ScoreTracker>();
+
+        GameObject Ui = GameObject.Find("Canvas/Score_UI");
+        if(Ui) score = Ui.GetComponent<ScoreTracker>();
     }
 	
     public void SubstractHealth(int hp)
@@ -21,7 +23,10 @@ public class HealthSystem : MonoBehaviour {
         if (Health <= 0)
         {
             if (this.tag == "Enemy")
-                score.score += 5;
+            {
+                if(score)
+                    score.score += 5;
+            }
 
             Destroy(this.gameObject);
         }
