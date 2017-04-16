@@ -29,7 +29,7 @@ public class OrbitCamWander : MonoBehaviour
 
     void ChangeTarget()
     {
-        Debug.Log("Changig Camera Targets");
+        //  Debug.Log("Changig Camera Targets");
         cam.input = Random.insideUnitCircle;
         wanderCountdown = wanderTime;
     }
