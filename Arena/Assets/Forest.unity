@@ -2037,10 +2037,39 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114217590259355562, guid: 1857369195094604a9f676e9fc2c7bf2,
+        type: 2}
+      propertyPath: powerups.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4975498827597364, guid: 1857369195094604a9f676e9fc2c7bf2, type: 2}
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114217590259355562, guid: 1857369195094604a9f676e9fc2c7bf2,
+        type: 2}
+      propertyPath: powerups.Array.data[0]
+      value: 
+      objectReference: {fileID: 114851081187916490, guid: 784509b3b3158164c9f701bc2219c774,
+        type: 2}
+    - target: {fileID: 114217590259355562, guid: 1857369195094604a9f676e9fc2c7bf2,
+        type: 2}
+      propertyPath: powerups.Array.data[1]
+      value: 
+      objectReference: {fileID: 114757419061700702, guid: 9fd7afc5562edfc4181b415b01e2c463,
+        type: 2}
+    - target: {fileID: 114217590259355562, guid: 1857369195094604a9f676e9fc2c7bf2,
+        type: 2}
+      propertyPath: powerups.Array.data[2]
+      value: 
+      objectReference: {fileID: 114549948776034454, guid: 7c720b902fd67f34599058d0276fb0c3,
+        type: 2}
+    - target: {fileID: 114217590259355562, guid: 1857369195094604a9f676e9fc2c7bf2,
+        type: 2}
+      propertyPath: abilitypickup
+      value: 
+      objectReference: {fileID: 114964436371207152, guid: f711ea45aeb95a94482c24a1c085b943,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1857369195094604a9f676e9fc2c7bf2, type: 2}
   m_IsPrefabParent: 0
