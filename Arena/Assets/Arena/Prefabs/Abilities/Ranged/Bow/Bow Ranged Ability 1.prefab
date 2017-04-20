@@ -62,6 +62,8 @@ MonoBehaviour:
   player: {fileID: 0}
   AimIndicatorPrefab: {fileID: 1221850963533860, guid: e31d36480fc0da9489b2365fdad4e196,
     type: 2}
+  AimSpeed: 0.5
+  MovementPenalty: 0.1
 --- !u!114 &114786772258083430
 MonoBehaviour:
   m_ObjectHideFlags: 1
