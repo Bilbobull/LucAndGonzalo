@@ -14,7 +14,7 @@ public class PlayerRangedAbility : BaseAbility
 
     private AbilityMeter meter;
 
-    float SpeedMult = 0.1f;
+    public float MovementPenalty = 0.1f;
 
     // Use this for initialization
     void Start ()
@@ -74,7 +74,7 @@ public class PlayerRangedAbility : BaseAbility
         // Apply our speed reduction
         CharacterMovementController mv = GetComponentInParent<CharacterMovementController>();
         if(mv)
-            mv.maxSpeed *= SpeedMult;
+            mv.maxSpeed *= MovementPenalty;
 
         // Hook into movement input so we can aim
         if (player)
@@ -110,7 +110,7 @@ public class PlayerRangedAbility : BaseAbility
         // Remove our speed reduction
         CharacterMovementController mv = GetComponentInParent<CharacterMovementController>();
         if (mv)
-            mv.maxSpeed /= SpeedMult;
+            mv.maxSpeed /= MovementPenalty;
 
         // Lose our input hook so we can aim
         if (player)

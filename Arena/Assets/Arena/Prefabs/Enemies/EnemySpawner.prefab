@@ -23,7 +23,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -60,3 +60,12 @@ MonoBehaviour:
   EnemyIncrement: 1
   MaxEnemiesAtTime: 5
   EnemySpawnTime: 0.15
+  Wave: -1
+  NextRoundTimer: 0
+  BetweenWaves: 0
+  powerups:
+  - {fileID: 114851081187916490, guid: 784509b3b3158164c9f701bc2219c774, type: 2}
+  - {fileID: 114757419061700702, guid: 9fd7afc5562edfc4181b415b01e2c463, type: 2}
+  - {fileID: 114549948776034454, guid: 7c720b902fd67f34599058d0276fb0c3, type: 2}
+  abilitypickup: {fileID: 114964436371207152, guid: f711ea45aeb95a94482c24a1c085b943,
+    type: 2}

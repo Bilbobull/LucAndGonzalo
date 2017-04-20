@@ -16,6 +16,7 @@ public class PlayerMovementAbility : BaseAbility
 	void Start ()
     {
         meter = GetComponent<AbilityMeter>();
+        controller = GetComponentInParent<CharacterMovementController>();
         player = GetPlayer();
         if(player)
             InputEvents.MovementAbility.Subscribe(OnMovementAbility, player.PlayerNum);
@@ -53,7 +54,10 @@ public class PlayerMovementAbility : BaseAbility
     {
         meter.StartCharging();
         if(controller)
+        {
+            Debug.Log("Running!");
             controller.maxSpeed *= SpeedBoostAmount;
+        }
     }
 
     void EndMovementAbility()
@@ -80,6 +84,8 @@ public class PlayerMovementAbility : BaseAbility
         yield return new WaitUntil(() => (meter.IsCharging && meter.IsEmpty));
         // Stop running
         EndMovementAbility();
+        Debug.Log("Done Running!");
+
         yield break;
     }
 
