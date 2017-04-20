@@ -23,6 +23,10 @@ public class EnemySpawner : MonoBehaviour {
 
     public bool BetweenWaves = false;
 
+    public BaseAbility[] powerups;
+    public AbilityPickup abilitypickup;
+
+
     private void Start()
     {
         TimeForSpawn = EnemySpawnTime;
@@ -48,6 +52,15 @@ public class EnemySpawner : MonoBehaviour {
                 ++Wave;
                 EnemiesWave = BaseEnemyNum + Wave * EnemyIncrement;
                 NextRoundTimer = NEXT_ROUND_TIMER;
+
+                if(Random.Range(1, 3) == 1)
+                {
+                    Vector3 pos = transform.position + new Vector3(Random.Range(-SpawnRad, SpawnRad), 0, Random.Range(-SpawnRad, SpawnRad));
+                    // Get a random enemy 
+                    AbilityPickup ap = abilitypickup;
+                    ap.Ability = powerups[Random.Range(0, powerups.Length)];
+                    ap = Instantiate(ap, pos, ap.transform.rotation);
+                }
             }
         }
 
