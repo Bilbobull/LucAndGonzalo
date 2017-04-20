@@ -54,9 +54,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   abilityName: Cannonball
+  ai:
+    minAttackRadius: 0
+    maxAttackRadius: 0
   RangedAttackPrefab: {fileID: 1701932285741730, guid: 692597b08015b6e458843db77fba502f,
     type: 2}
   player: {fileID: 0}
+  AimIndicatorPrefab: {fileID: 0}
+  MovementPenalty: 0.1
 --- !u!114 &114911855064852794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,8 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67429d1948cb624b854bb10c49647fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ammount: 0
+  Amount: 0
   MinCharge: 1
   RechargeRate: -Infinity
-  ChargeRate: 0.33333334
+  ChargeRate: 1
   ui: {fileID: 1411983445328284, guid: 063d68626c7c95841a3b1c82f4c7bfd3, type: 2}

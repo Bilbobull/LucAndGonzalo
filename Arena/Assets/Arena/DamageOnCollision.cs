@@ -6,6 +6,7 @@ public class DamageOnCollision : MonoBehaviour
 {
     public string DamagingUnitTag = "Player";
     public bool IgnoreDamaging = false;
+    public bool DestroyAfterDamage = false;
     public int Damage = 1;
 
     void SetDamageTag(string newTag)
@@ -31,6 +32,8 @@ public class DamageOnCollision : MonoBehaviour
             // Debug.Log(gameObject.name + " hit " + other.gameObject.name + " for " + Damage);
             if(hp)
                 hp.SubstractHealth(Damage);
+            if (DestroyAfterDamage)
+                Destroy(gameObject);
         }
     }
 

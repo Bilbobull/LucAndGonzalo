@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114320485767838234}
   - component: {fileID: 114287049366295618}
   - component: {fileID: 114240066475462650}
+  - component: {fileID: 114586632788553740}
   m_Layer: 0
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -78,6 +79,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33744572613035444
 MeshFilter:
@@ -195,6 +197,19 @@ MonoBehaviour:
   zigzagradius: 100
   movement: 0
   ClosestPlayer: {fileID: 0}
+--- !u!114 &114586632788553740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394786794765744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1de99e92bba6514aafd55df6ce7584c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1020782357186000, guid: 273eea6bd409fcd4c83b8f506c1764fe, type: 2}
+  createAtLocation: 1
 --- !u!114 &114996330598161800
 MonoBehaviour:
   m_ObjectHideFlags: 1

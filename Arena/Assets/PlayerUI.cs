@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour {
 
     public PlayerController player;
-
+    public float hpSpacing;
     Text text;
 
     public GameObject heartObj;
