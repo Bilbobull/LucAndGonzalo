@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageOnCollision : MonoBehaviour
 {
     public string DamagingUnitTag = "Player";
+    public bool IgnoreDamaging = false;
     public int Damage = 1;
 
     void SetDamageTag(string newTag)
@@ -24,10 +25,13 @@ public class DamageOnCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == DamagingUnitTag)
+        Debug.Log(other.name);
+        if (IgnoreDamaging || other.gameObject.tag == DamagingUnitTag)
         {
+            HealthSystem hp = other.gameObject.GetComponent<HealthSystem>();
             // Debug.Log(gameObject.name + " hit " + other.gameObject.name + " for " + Damage);
-            other.gameObject.GetComponent<HealthSystem>().SubstractHealth(Damage);
+            if(hp)
+                hp.SubstractHealth(Damage);
         }
     }
 

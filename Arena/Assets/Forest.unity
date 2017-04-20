@@ -571,6 +571,17 @@ Prefab:
       propertyPath: m_Name
       value: Wave UI
       objectReference: {fileID: 0}
+    - target: {fileID: 114700384350561820, guid: cfd40f681eba22d4d993aae0e4690a1d,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114700384350561820, guid: cfd40f681eba22d4d993aae0e4690a1d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2618c01c71fca9b478edd4eeec3fe10b,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114885299757318998, guid: cfd40f681eba22d4d993aae0e4690a1d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cfd40f681eba22d4d993aae0e4690a1d, type: 2}
@@ -2708,8 +2719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e9eb633f4319b45a161e174abb2498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 1733213463852930, guid: 1857369195094604a9f676e9fc2c7bf2,
-    type: 2}
+  enemySpawner: {fileID: 1454313691}
   TimeWaveDisplay: 2
 --- !u!1001 &940037938
 Prefab:
@@ -3680,6 +3690,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36d01a7e99983034f9107d2cacf55bbe, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1454313691 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1733213463852930, guid: 1857369195094604a9f676e9fc2c7bf2,
+    type: 2}
+  m_PrefabInternal: {fileID: 632630365}
 --- !u!1001 &1455467219
 Prefab:
   m_ObjectHideFlags: 0

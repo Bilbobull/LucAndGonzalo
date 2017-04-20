@@ -47,6 +47,22 @@ MonoBehaviour:
     negativeMouseDirection: 0
     currentValue: 0
     delay: 0
+  - name: Method 3
+    controlSet: 0
+    inputType_: 1
+    sendOnChannels: 00000000
+    expanded: 1
+    parentEvent: {fileID: 11400000}
+    positiveKeyCode: 275
+    negativeKeyCode: 276
+    positiveGamePadButton: 0
+    negativeGamePadButton: 0
+    positiveGamePadAxis: 0
+    negativeGamePadAxis: 0
+    positiveMouseDirection: 0
+    negativeMouseDirection: 0
+    currentValue: 0
+    delay: 0
   dualAxisInputMethods: []
   channelCount: 4
   hasNegativeInput: 1
