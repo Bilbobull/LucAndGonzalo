@@ -25,38 +25,6 @@ public class PlayerRangedAbility : BaseAbility
             InputEvents.RangedAttack.Subscribe(OnRangedAttack, player.PlayerNum);
     }
 
-    void OnRangedAttack(InputEventInfo info)
-    {
-        switch (info.inputState)
-        {
-            case InputState.Triggered:
-                StartCharging();
-                break;
-
-            case InputState.Released:
-                EndCharging(null);
-                break;
-        }
-    }
-
-    void StartCharging()
-    {
-        // Turn off regular movement here
-        if (player)
-        {
-            InputEvents.Movement.Subscribe(OnChargeMovement, player.PlayerNum);
-            // Apply our speed reduction
-            player.Speed *= SpeedMult;
-        }
-        meter.StartCharging();
-        // Create our aiming instance if we have one
-        if(AimIndicatorPrefab)
-        {
-            AimIndicatorInstance = Instantiate(AimIndicatorPrefab, transform);
-            AimIndicatorInstance.SendMessage("SetAttacker", gameObject);
-        }
-    }
-
     void Update()
     {
         if(meter.IsCharging && AimIndicatorInstance)
@@ -79,6 +47,49 @@ public class PlayerRangedAbility : BaseAbility
         }
     }
 
+    void OnDestroy()
+    {
+        if (meter.IsCharging)
+            EndCharging(null);
+    }
+
+    void OnRangedAttack(InputEventInfo info)
+    {
+        switch (info.inputState)
+        {
+            case InputState.Triggered:
+                StartCharging();
+                break;
+
+            case InputState.Released:
+                EndCharging(null);
+                break;
+        }
+    }
+
+    void StartCharging()
+    {
+        meter.StartCharging();
+
+        // Apply our speed reduction
+        CharacterMovementController mv = GetComponentInParent<CharacterMovementController>();
+        if(mv)
+            mv.maxSpeed *= SpeedMult;
+
+        // Hook into movement input so we can aim
+        if (player)
+        {
+            InputEvents.Movement.Subscribe(OnChargeMovement, player.PlayerNum);
+        }
+
+        // Create our aiming instance if we have one
+        if(AimIndicatorPrefab)
+        {
+            AimIndicatorInstance = Instantiate(AimIndicatorPrefab, transform);
+            AimIndicatorInstance.SendMessage("SetAttacker", gameObject);
+        }
+    }
+
     void OnChargeMovement(InputEventInfo info)
     {
         // NOTE maybe just set speed to 0 while we aim?
@@ -94,17 +105,26 @@ public class PlayerRangedAbility : BaseAbility
 
     void EndCharging(GameObject target)
     {
-        if(player)
+        float charge = meter.EndCharging();
+
+        // Remove our speed reduction
+        CharacterMovementController mv = GetComponentInParent<CharacterMovementController>();
+        if (mv)
+            mv.maxSpeed /= SpeedMult;
+
+        // Lose our input hook so we can aim
+        if (player)
         {
             InputEvents.Movement.Unsubscribe(OnChargeMovement, player.PlayerNum);
-            player.Speed /= SpeedMult;
         }
-        float charge = meter.EndCharging();
-        if (charge > 0.0f)
-            DoAttack(charge, target);
+
         // Clean up our aim indicator if we need to
         if (AimIndicatorInstance)
             Destroy(AimIndicatorInstance);
+
+        // Only attack if we got a charge (above the meter's minimum)
+        if (charge > 0.0f)
+            DoAttack(charge, target);
     }
 
     void DoAttack(float charge, GameObject target)
@@ -113,15 +133,12 @@ public class PlayerRangedAbility : BaseAbility
         GameObject proj = Instantiate(RangedAttackPrefab, transform.position, transform.rotation);
 
         // Create the attack as a child of the player in local space
-        if (player)
-        {
-            proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
-            proj.SendMessage("SetAttacker", gameObject);
-        }
-        else if (target)
+        proj.SendMessage("ChargeValue", charge, SendMessageOptions.DontRequireReceiver);
+        proj.SendMessage("SetAttacker", gameObject);
+
+        if (target)
         {
             proj.GetComponentInChildren<DamageOnCollision>().DamagingUnitTag = target.tag;
-            proj.SendMessage("SetAttacker", gameObject);
         }
     }
 

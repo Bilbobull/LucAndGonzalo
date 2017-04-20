@@ -42,8 +42,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4148157362404736}
-  - component: {fileID: 114190838514483504}
   - component: {fileID: 114787961813129276}
+  - component: {fileID: 114458657390872354}
   m_Layer: 0
   m_Name: Explode Ability
   m_TagString: Untagged
@@ -144,24 +144,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114190838514483504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1508593776378766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98dbaa4527403bd4cbb9f217c4ec2da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  abilityName: Explode
-  ai:
-    minAttackRadius: -1
-    maxAttackRadius: 3
-  AttackPrefab: {fileID: 1556389634930476, guid: 31b7f23a8f549484c8f0428a654bf486,
-    type: 2}
 --- !u!114 &114287049366295618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +196,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxSteepness: 90
+--- !u!114 &114458657390872354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508593776378766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b25d136406b8eb44a7543776a94de2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  abilityName: Explode
+  ai:
+    minAttackRadius: 0
+    maxAttackRadius: 2
+  RangedAttackPrefab: {fileID: 1556389634930476, guid: 31b7f23a8f549484c8f0428a654bf486,
+    type: 2}
+  player: {fileID: 0}
+  AimIndicatorPrefab: {fileID: 0}
 --- !u!114 &114492134643054638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,9 +243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 0
-  MinCharge: 0
-  RechargeRate: 2
-  ChargeRate: 0
+  MinCharge: 1
+  RechargeRate: -0.5
+  ChargeRate: 1
   ui: {fileID: 1411983445328284, guid: e07c1961d4385ae4ba4a6afb1bbd7145, type: 2}
 --- !u!114 &114996330598161800
 MonoBehaviour:

@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        // Double-tap prevention
         StartCoroutine("JustWaitAGoddamnSecond");
 
         selector = GetComponentInChildren<MenuSelector>();

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -173,26 +173,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &643989319 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1394786794765744, guid: d01125d85eda72448aae08b58525f1bc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1421834753}
---- !u!114 &643989320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 643989319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1a7d971b7802c4e99c8cc432a8873a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags: []
-  layers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &835561899
 Prefab:
   m_ObjectHideFlags: 0
@@ -528,40 +508,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114190838514483504, guid: d01125d85eda72448aae08b58525f1bc,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114190838514483504, guid: d01125d85eda72448aae08b58525f1bc, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d01125d85eda72448aae08b58525f1bc, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1637428744 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1508593776378766, guid: d01125d85eda72448aae08b58525f1bc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1421834753}
---- !u!114 &1637428748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1637428744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b25d136406b8eb44a7543776a94de2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  abilityName: Explode
-  ai:
-    minAttackRadius: -1
-    maxAttackRadius: 2
-  RangedAttackPrefab: {fileID: 1556389634930476, guid: 31b7f23a8f549484c8f0428a654bf486,
-    type: 2}
-  player: {fileID: 0}
-  AimIndicatorPrefab: {fileID: 0}
 --- !u!1001 &1663092451
 Prefab:
   m_ObjectHideFlags: 0
