@@ -17,6 +17,7 @@ public class PlayerSpawner : MonoBehaviour {
         int count = GameObject.FindGameObjectsWithTag("Player").Length;
         if((count < 2) && player)
         {
+            Debug.Log("Creating player!");
             Instantiate(player);
         }
         else

@@ -17,7 +17,7 @@ MonoBehaviour:
   - name: Method 1
     controlSet: 0
     inputType_: 1
-    sendOnChannels: 
+    sendOnChannels: 0000
     expanded: 1
     parentEvent: {fileID: 11400000}
     keyCode: 13
@@ -25,9 +25,20 @@ MonoBehaviour:
     gamePadAxis: 0
     mouseDirection: 0
     threshold: 0
+  - name: Method 2
+    controlSet: 0
+    inputType_: 3
+    sendOnChannels: 0101
+    expanded: 1
+    parentEvent: {fileID: 11400000}
+    keyCode: 0
+    gamePadButton: 9
+    gamePadAxis: 0
+    mouseDirection: 0
+    threshold: 0
   singleAxisInputMethods: []
   dualAxisInputMethods: []
-  channelCount: 0
+  channelCount: 2
   hasNegativeInput: 1
   threshold: 0.2
   thresholdType: 0

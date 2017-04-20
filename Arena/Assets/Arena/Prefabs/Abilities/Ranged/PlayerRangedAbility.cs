@@ -14,6 +14,8 @@ public class PlayerRangedAbility : BaseAbility
 
     private AbilityMeter meter;
 
+    [Range(0,1)]
+    public float AimSpeed = 1.0f;
     public float MovementPenalty = 0.1f;
 
     // Use this for initialization
@@ -100,6 +102,9 @@ public class PlayerRangedAbility : BaseAbility
         // Project onto the world plane (y = 0)
         lookDir.y = 0.0f;
         lookDir.Normalize();
+
+        lookDir = Vector3.Slerp(transform.forward, lookDir, AimSpeed);
+
         transform.LookAt(transform.position + lookDir, Vector3.up);
     }
 
