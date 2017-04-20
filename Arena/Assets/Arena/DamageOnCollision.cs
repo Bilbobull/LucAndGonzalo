@@ -25,7 +25,6 @@ public class DamageOnCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (IgnoreDamaging || other.gameObject.tag == DamagingUnitTag)
         {
             HealthSystem hp = other.gameObject.GetComponent<HealthSystem>();
