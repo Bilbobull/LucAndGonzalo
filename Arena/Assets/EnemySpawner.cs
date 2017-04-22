@@ -89,6 +89,10 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, SpawnRad);
+    }
 
 }

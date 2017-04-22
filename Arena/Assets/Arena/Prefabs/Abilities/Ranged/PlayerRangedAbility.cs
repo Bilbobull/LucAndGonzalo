@@ -53,6 +53,8 @@ public class PlayerRangedAbility : BaseAbility
     {
         if (meter.IsCharging)
             EndCharging(null);
+        if (player)
+            InputEvents.RangedAttack.Unsubscribe(OnRangedAttack, player.PlayerNum);
     }
 
     void OnRangedAttack(InputEventInfo info)

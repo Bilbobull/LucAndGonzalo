@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour {
 
     public PlayerController player;
-    public float hpSpacing;
     Text text;
 
     public GameObject heartObj;
@@ -17,14 +16,35 @@ public class PlayerUI : MonoBehaviour {
 	void Start ()
     {
         text = GetComponent<Text>();
+        if(player)
+            SetPlayer(player);
+    }
+
+    public void SetPlayer(PlayerController p)
+    {
+        player = p;
         health = player.GetComponent<HealthSystem>();
-        for(int i = 0; i < health.MaxHealth; ++i)
+        CreateHearts();
+    }
+
+    void CreateHearts()
+    {
+        if(hearts.Count > 0)
         {
-            GameObject temp = Instantiate(heartObj,transform);
+            foreach(GameObject h in hearts)
+            {
+                Destroy(h);
+            }
+            hearts.Clear();
+        }
+
+        for (int i = 0; i < health.MaxHealth; ++i)
+        {
+            GameObject temp = Instantiate(heartObj, transform);
             hearts.Add(temp);
         }
-	}
-	
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -36,6 +56,7 @@ public class PlayerUI : MonoBehaviour {
         }
         else
         {
+
             BaseAbility[] currentAbilities = player.GetComponentsInChildren<BaseAbility>();
             string temp;
             temp = "Player " + (player.PlayerNum + 1) + '\n';
@@ -57,8 +78,8 @@ public class PlayerUI : MonoBehaviour {
             }
             text.text = temp;
 
+
             int hp = health.GetHealth();
-            
             for (int i = 0; i < health.MaxHealth; ++i)
             {
                 if (i < hp)

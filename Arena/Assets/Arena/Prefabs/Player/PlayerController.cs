@@ -15,16 +15,45 @@ public class PlayerController : MonoBehaviour
     /// DEPRECATED
     public float TurnSpeed;
 
+    void Awake()
+    {
+        PlayerNum = FindPlayerNum();
+
+    }
+
     void Start ()
     {
         // Get a new player number
-        PlayerNum = PlayerCount;
         PlayerCount++;
 
         // Debug.Log("Player " + PlayerNum + " has joined!");
 
         // Subscribe to our movement events
         InputEvents.Movement.Subscribe(OnMovement, PlayerNum);
+    }
+
+    int FindPlayerNum()
+    {
+        List<PlayerController> allplayers = new List<PlayerController>(FindObjectsOfType<PlayerController>());
+        // Find the first number that isnt taken
+        int num;
+        for (num = 0; num < allplayers.Count;)
+        {
+            // If we can find another player with this number, give up & keep looking
+            if (allplayers.Exists((x) => {
+                if (x == this)
+                    return false;
+                return x.PlayerNum == num;
+            }))
+            {
+                ++num;
+            }
+            else
+            {
+                return num;
+            }
+        }
+        return num; // Should be allplayers.Count
     }
 
     private void OnDestroy()

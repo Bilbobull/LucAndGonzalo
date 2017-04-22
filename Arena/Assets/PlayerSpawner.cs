@@ -5,20 +5,30 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour {
 
+    const int MaxPlayers = 2;
     public GameObject player;
 
-	// Use this for initialization
-	void Start () {
+    public PlayerUI[] PlayerUIs;
+
+    // Use this for initialization
+    void Start () {
         InputEvents.CreatePlayer.Subscribe(OnCreatePlayer);
 	}
 
     private void OnCreatePlayer(InputEventInfo _inputEventInfo)
     {
         int count = GameObject.FindGameObjectsWithTag("Player").Length;
-        if((count < 2) && player)
+        if((count < MaxPlayers) && player)
         {
             Debug.Log("Creating player!");
-            Instantiate(player);
+            GameObject instance = Instantiate(player);
+
+            PlayerController pc = instance.GetComponent<PlayerController>();
+            if(PlayerUIs.Length > pc.PlayerNum)
+            {
+                PlayerUI ui = PlayerUIs[pc.PlayerNum];
+                ui.SetPlayer(pc);
+            }
         }
         else
         {
