@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Credits.unity
     guid: 465924fad2c6cd84a9106274c85d695b
+  - enabled: 1
+    path: Assets/CharacterMovementTest.unity
+    guid: a224dbd2bc5709940b8d88420558a9d4
