@@ -1,0 +1,4 @@
+Arenathon Summary
+
+Arenathon is a simple arcade-style combat game, designed to show technical ability in implementing data-driven AI and gameplay mechanic systems in Unity.
+In Arenathon, up to two players fight endless waves of enemies until they die. Defeating enemies grants the players new abilities, allowing for exciting combat variety. Arenathon is a one-semester technical game project by two senior RTIS students.
