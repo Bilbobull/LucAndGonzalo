@@ -1,0 +1,34 @@
+Team Files
+Luc Kadletz
+
+AbilityMeter.cs
+AbilityMeterUI.cs
+AbilityPickup.cs
+AbilityTextUi.cs
+AttatchToCanvas.cs
+BackButtonAction.cs
+BaseAbility.cs
+CharacterMovementController.cs
+ColorFromParent.cs
+CreateOnDestroy.cs
+EnemyAttackManager.cs
+FaceTargets.cs
+ForceTrigger.cs
+Lifetime.cs
+LineTrail.cs
+LoadLevel.cs
+MenuButton.cs
+MenuController.cs
+orbitCamWander.cs
+PlayerBlinkAbility.cs
+PlayerController.cs
+PlayerMaterial.cs
+PlayerMeleeAbility.cs
+PlayerMovementAbility.cs
+PlayerRTangedAbility.cs
+PlayerSpawner.cs
+SlowOrbitCam.cs
+SpawnDefaultAbilities.cs
+StartButtonAction.cs
+StickOnCollision.cs
+TextGradient.cs

@@ -2,6 +2,9 @@
 Thumbs.db
 ehthumbs.db
 
+#Installer Game directory ( copy from a build )
+Installer/GAMEDIRECTORY
+
 # Folder config file
 Desktop.ini
 
