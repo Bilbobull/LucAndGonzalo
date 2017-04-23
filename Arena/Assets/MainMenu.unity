@@ -7426,6 +7426,7 @@ GameObject:
   - component: {fileID: 1887916447}
   - component: {fileID: 1887916449}
   - component: {fileID: 1887916450}
+  - component: {fileID: 1887916451}
   m_Layer: 0
   m_Name: Quit
   m_TagString: Untagged
@@ -7528,7 +7529,7 @@ MonoBehaviour:
   highlightColor:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 0, g: 0.66197205, b: 1, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 1, g: 1, b: 1, a: 0}
@@ -7554,8 +7555,19 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  selectMessage: 
+  selectMessage: DoQuitGame
   highlighted: 0
+--- !u!114 &1887916451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1887916445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9144383027f84f4e8522583e8d0122e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1894367423 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 36d01a7e99983034f9107d2cacf55bbe, type: 3}
